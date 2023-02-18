@@ -31,9 +31,13 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": []
+            "scripts": [
+              "@popperjs/core/dist/umd/popper.min.js",
+              "bootstrap/dist/js/bootstrap.js"
+            ]
           },
           "configurations": {
             "production": {

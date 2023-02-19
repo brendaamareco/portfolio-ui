@@ -9,6 +9,8 @@ import { AboutComponent } from 'src/app/components/about/about.component';
 import { EducationComponent } from 'src/app/components/education/education.component';
 import { EducationListComponent } from '../../components/education-list/education-list.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { SkillListComponent } from '../../components/skill-list/skill-list.component';
+import { SkillComponent } from '../../components/skill/skill.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { HeaderComponent } from '../../components/header/header.component';
     AboutComponent,
     EducationComponent,
     EducationListComponent,
-    HeaderComponent
+    HeaderComponent,
+    SkillListComponent,
+    SkillComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,9 @@ import { HeaderComponent } from '../../components/header/header.component';
     AboutComponent,
     EducationComponent,
     EducationListComponent,
-    HeaderComponent
+    HeaderComponent,
+    SkillListComponent,
+    SkillComponent
   ]
 })
 export class PortfolioModule { }

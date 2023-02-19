@@ -13,6 +13,8 @@ import { HardSkillComponent } from '../../components/hard-skill/hard-skill.compo
 import { HardSkillListComponent } from '../../components/hard-skill-list/hard-skill-list.component';
 import { SoftSkillComponent } from '../../components/soft-skill/soft-skill.component';
 import { SoftSkillListComponent } from '../../components/soft-skill-list/soft-skill-list.component';
+import { ProjectComponent } from '../../components/project/project.component';
+import { ProjectListComponent } from '../../components/project-list/project-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { SoftSkillListComponent } from '../../components/soft-skill-list/soft-sk
     HardSkillComponent,
     HardSkillListComponent,
     SoftSkillComponent,
-    SoftSkillListComponent
+    SoftSkillListComponent,
+    ProjectComponent,
+    ProjectListComponent
   ],
   imports: [
     CommonModule,

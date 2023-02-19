@@ -6,12 +6,14 @@ import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioLayoutComponent } from 'src/app/components/portfolio-layout/portfolio-layout.component';
 import { PortfolioPageComponent } from 'src/app/components/pages/portfolio-page/portfolio-page.component';
+import { AboutComponent } from 'src/app/components/about/about.component';
 
 @NgModule({
   declarations: [
     NavComponent,
     PortfolioLayoutComponent,
-    PortfolioPageComponent
+    PortfolioPageComponent,
+    AboutComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { PortfolioPageComponent } from 'src/app/components/pages/portfolio-page/
   exports: [
     NavComponent,
     PortfolioLayoutComponent,
-    PortfolioPageComponent
+    PortfolioPageComponent,
+    AboutComponent
   ]
 })
 export class PortfolioModule { }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SkillComponent } from './skill.component';
+import { HardSkillListComponent } from './hard-skill-list.component';
 
-describe('SkillComponent', () => {
-  let component: SkillComponent;
-  let fixture: ComponentFixture<SkillComponent>;
+describe('HardSkillListComponent', () => {
+  let component: HardSkillListComponent;
+  let fixture: ComponentFixture<HardSkillListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SkillComponent ]
+      declarations: [ HardSkillListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SkillComponent);
+    fixture = TestBed.createComponent(HardSkillListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

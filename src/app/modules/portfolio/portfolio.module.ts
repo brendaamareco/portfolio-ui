@@ -9,8 +9,8 @@ import { AboutComponent } from 'src/app/components/about/about.component';
 import { EducationComponent } from 'src/app/components/education/education.component';
 import { EducationListComponent } from '../../components/education-list/education-list.component';
 import { HeaderComponent } from '../../components/header/header.component';
-import { SkillListComponent } from '../../components/skill-list/skill-list.component';
-import { SkillComponent } from '../../components/skill/skill.component';
+import { HardSkillComponent } from '../../components/hard-skill/hard-skill.component';
+import { HardSkillListComponent } from '../../components/hard-skill-list/hard-skill-list.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +20,8 @@ import { SkillComponent } from '../../components/skill/skill.component';
     EducationComponent,
     EducationListComponent,
     HeaderComponent,
-    SkillListComponent,
-    SkillComponent
+    HardSkillComponent,
+    HardSkillListComponent
   ],
   imports: [
     CommonModule,
@@ -36,8 +36,8 @@ import { SkillComponent } from '../../components/skill/skill.component';
     EducationComponent,
     EducationListComponent,
     HeaderComponent,
-    SkillListComponent,
-    SkillComponent
+    HardSkillComponent,
+    HardSkillListComponent
   ]
 })
 export class PortfolioModule { }

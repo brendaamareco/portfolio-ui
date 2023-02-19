@@ -15,6 +15,7 @@ import { SoftSkillComponent } from '../../components/soft-skill/soft-skill.compo
 import { SoftSkillListComponent } from '../../components/soft-skill-list/soft-skill-list.component';
 import { ProjectComponent } from '../../components/project/project.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
+import { TabsComponent } from '../../components/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ProjectListComponent } from '../../components/project-list/project-list
     SoftSkillComponent,
     SoftSkillListComponent,
     ProjectComponent,
-    ProjectListComponent
+    ProjectListComponent,
+    TabsComponent
   ],
   imports: [
     CommonModule,

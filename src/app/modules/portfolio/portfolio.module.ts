@@ -11,6 +11,8 @@ import { EducationListComponent } from '../../components/education-list/educatio
 import { HeaderComponent } from '../../components/header/header.component';
 import { HardSkillComponent } from '../../components/hard-skill/hard-skill.component';
 import { HardSkillListComponent } from '../../components/hard-skill-list/hard-skill-list.component';
+import { SoftSkillComponent } from '../../components/soft-skill/soft-skill.component';
+import { SoftSkillListComponent } from '../../components/soft-skill-list/soft-skill-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { HardSkillListComponent } from '../../components/hard-skill-list/hard-sk
     EducationListComponent,
     HeaderComponent,
     HardSkillComponent,
-    HardSkillListComponent
+    HardSkillListComponent,
+    SoftSkillComponent,
+    SoftSkillListComponent
   ],
   imports: [
     CommonModule,
@@ -29,15 +33,6 @@ import { HardSkillListComponent } from '../../components/hard-skill-list/hard-sk
     MaterialModule,
     BrowserAnimationsModule
   ],
-  exports: [
-    NavComponent,
-    PortfolioPageComponent,
-    AboutComponent,
-    EducationComponent,
-    EducationListComponent,
-    HeaderComponent,
-    HardSkillComponent,
-    HardSkillListComponent
-  ]
+  exports: []
 })
 export class PortfolioModule { }

@@ -4,20 +4,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from 'src/app/components/nav/nav.component';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PortfolioLayoutComponent } from 'src/app/components/portfolio-layout/portfolio-layout.component';
 import { PortfolioPageComponent } from 'src/app/components/pages/portfolio-page/portfolio-page.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { EducationComponent } from 'src/app/components/education/education.component';
 import { EducationListComponent } from '../../components/education-list/education-list.component';
+import { HeaderComponent } from '../../components/header/header.component';
 
 @NgModule({
   declarations: [
     NavComponent,
-    PortfolioLayoutComponent,
     PortfolioPageComponent,
     AboutComponent,
     EducationComponent,
-    EducationListComponent
+    EducationListComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -27,11 +27,11 @@ import { EducationListComponent } from '../../components/education-list/educatio
   ],
   exports: [
     NavComponent,
-    PortfolioLayoutComponent,
     PortfolioPageComponent,
     AboutComponent,
     EducationComponent,
-    EducationListComponent
+    EducationListComponent,
+    HeaderComponent
   ]
 })
 export class PortfolioModule { }

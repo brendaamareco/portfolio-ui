@@ -17,6 +17,8 @@ import { ProjectComponent } from '../../components/project/project.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
 import { LanguageListComponent } from '../../components/language-list/language-list.component';
 import { LanguageComponent } from '../../components/language/language.component';
+import { ExperienceComponent } from '../../components/experience/experience.component';
+import { ExperienceListComponent } from '../../components/experience-list/experience-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { LanguageComponent } from '../../components/language/language.component'
     ProjectComponent,
     ProjectListComponent,
     LanguageListComponent,
-    LanguageComponent
+    LanguageComponent,
+    ExperienceComponent,
+    ExperienceListComponent
   ],
   imports: [
     CommonModule,

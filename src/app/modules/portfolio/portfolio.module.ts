@@ -15,7 +15,8 @@ import { SoftSkillComponent } from '../../components/soft-skill/soft-skill.compo
 import { SoftSkillListComponent } from '../../components/soft-skill-list/soft-skill-list.component';
 import { ProjectComponent } from '../../components/project/project.component';
 import { ProjectListComponent } from '../../components/project-list/project-list.component';
-import { TabsComponent } from '../../components/tabs/tabs.component';
+import { LanguageListComponent } from '../../components/language-list/language-list.component';
+import { LanguageComponent } from '../../components/language/language.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TabsComponent } from '../../components/tabs/tabs.component';
     SoftSkillListComponent,
     ProjectComponent,
     ProjectListComponent,
-    TabsComponent
+    LanguageListComponent,
+    LanguageComponent
   ],
   imports: [
     CommonModule,

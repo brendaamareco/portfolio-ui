@@ -7,13 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PortfolioLayoutComponent } from 'src/app/components/portfolio-layout/portfolio-layout.component';
 import { PortfolioPageComponent } from 'src/app/components/pages/portfolio-page/portfolio-page.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
+import { EducationComponent } from 'src/app/components/education/education.component';
+import { EducationListComponent } from '../../components/education-list/education-list.component';
 
 @NgModule({
   declarations: [
     NavComponent,
     PortfolioLayoutComponent,
     PortfolioPageComponent,
-    AboutComponent
+    AboutComponent,
+    EducationComponent,
+    EducationListComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +29,9 @@ import { AboutComponent } from 'src/app/components/about/about.component';
     NavComponent,
     PortfolioLayoutComponent,
     PortfolioPageComponent,
-    AboutComponent
+    AboutComponent,
+    EducationComponent,
+    EducationListComponent
   ]
 })
 export class PortfolioModule { }

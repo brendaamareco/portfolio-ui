@@ -1,5 +1,14 @@
 <mat-card class="education mb-2">
-    <mat-card-header>
+    <mat-card-actions class="w-100 d-flex justify-content-end">
+        <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>remove</mat-icon>
+        </button>
+    </mat-card-actions>
+
+    <mat-card-header class="pt-0">
         <div mat-card-avatar><mat-icon>account_box</mat-icon></div>
         <mat-card-title class="fs-6">Nombre institución</mat-card-title>
         <mat-card-subtitle class="text-start">
@@ -8,15 +17,6 @@
             <span>dd/mm/yyyy</span>
         </mat-card-subtitle>
     </mat-card-header>
-
-    <mat-card-actions class="position-absolute top-0 end-0">
-        <button mat-icon-button>
-            <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button>
-            <mat-icon>remove</mat-icon>
-        </button>
-    </mat-card-actions>
 
     <mat-card-content class="pb-4">
         <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit velit, obcaecati ipsam maxime iusto aliquam neque illo voluptatem laboriosam, assumenda nesciunt est distinctio placeat et consectetur dolorem mollitia suscipit accusamus.</p>

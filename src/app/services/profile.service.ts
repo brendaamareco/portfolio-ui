@@ -9,8 +9,8 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getProfile(profileId: string): Observable<any>
+  getProfile(profileId: number): Observable<any>
   {
-    return this.http.get(`https://localhost:8080/profiles/${profileId}`)
+    return this.http.get(`http://localhost:8080/api/profiles/${profileId}`)
   }
 }

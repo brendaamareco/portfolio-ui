@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavComponent } from 'src/app/components/nav/nav.component';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PortfolioPageComponent } from 'src/app/components/pages/portfolio-page/portfolio-page.component';
+import { PortfolioPageComponent } from 'src/app/pages/portfolio-page/portfolio-page.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { EducationComponent } from 'src/app/components/education/education.component';
 import { EducationListComponent } from '../../components/education-list/education-list.component';

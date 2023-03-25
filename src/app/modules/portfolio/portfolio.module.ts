@@ -19,6 +19,7 @@ import { LanguageListComponent } from '../../components/language-list/language-l
 import { LanguageComponent } from '../../components/language/language.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
 import { ExperienceListComponent } from '../../components/experience-list/experience-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ExperienceListComponent } from '../../components/experience-list/experi
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   exports: []
 })

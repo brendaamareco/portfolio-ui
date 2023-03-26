@@ -1,4 +1,27 @@
 <h1 mat-dialog-title>Editar perfil</h1>
-<div mat-dialog-content>
-    welcomeText: {{ profile?.thumbnail }}
-</div>
+<form [formGroup]="profileForm" (submit)="submitProfile()">
+  <div mat-dialog-content class="mat-typography row">
+
+    <mat-form-field appearance="fill">
+      <mat-label>URL Imagen</mat-label>
+      <img matPrefix [src]="profile.thumbnail" width="40px" class="pe-1 ps-2"/>
+      <input matInput formControlName="thumbnail">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Mensaje de bienvenida</mat-label>
+      <textarea matInput formControlName="welcomeText" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rol</mat-label>
+      <input matInput formControlName="role">
+    </mat-form-field>
+  </div>
+
+</form>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Editar</button>
+</mat-dialog-actions>

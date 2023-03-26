@@ -47,7 +47,7 @@ export class HeaderEditDialogComponent {
   profileForm: FormGroup = new FormGroup({});
 
   constructor( public dialogRef: MatDialogRef<HeaderEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder
+    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder, private profileService: ProfileService
   ) 
   {
     this.profileForm = this.formBuilder.group(
@@ -61,7 +61,12 @@ export class HeaderEditDialogComponent {
 
   submitProfile(): void
   {
-    console.log("Perfil editado " + this.profileForm.controls);
+    this.profile.thumbnail = this.profileForm.get("thumbnail")?.value;
+    this.profile.welcomeText = this.profileForm.get("welcomeText")?.value;
+    this.profile.role = this.profileForm.get("role")?.value;
 
+    this.profileService.updateProfile(this.profile).subscribe( response => {});
+    this.dialogRef.close();
   }
+
 }

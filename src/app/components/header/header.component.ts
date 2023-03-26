@@ -59,13 +59,9 @@ export class HeaderEditDialogComponent {
     )
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
   submitProfile(): void
   {
-    alert("Perfil editado " + this.profileForm.controls);
+    console.log("Perfil editado " + this.profileForm.controls);
 
   }
 }

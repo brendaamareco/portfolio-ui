@@ -1,6 +1,13 @@
 <mat-toolbar class="navbar navbar-dark bg-gray-dark">
     <div class="container-fluid">
-        <a class="navbar-brand text-light">Brenda Mareco</a>
+        <a class="navbar-brand text-light">
+            <span class="name">
+                {{ owner?.name }}
+            </span>
+            <span class="name">
+                {{ owner?.lastName }}
+            </span>
+        </a>
         <div class="d-flex">
             <button mat-flat-button color="primary" type="submit">
                 <mat-icon>person</mat-icon> Login

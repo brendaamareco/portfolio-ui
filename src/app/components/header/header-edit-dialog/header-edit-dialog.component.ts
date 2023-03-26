@@ -1,9 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Profile } from 'src/app/models/profile.interface';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -12,12 +9,13 @@ import { ProfileService } from 'src/app/services/profile.service';
   templateUrl: './header-edit-dialog.component.html',
   styleUrls: ['./header-edit-dialog.component.scss']
 })
-export class HeaderEditDialogComponent {
+export class HeaderEditDialogComponent 
+{
+
   profileForm: FormGroup = new FormGroup({});
 
   constructor( public dialogRef: MatDialogRef<HeaderEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder, private profileService: ProfileService
-  ) 
+    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder, private profileService: ProfileService) 
   {
     this.profileForm = this.formBuilder.group(
       {

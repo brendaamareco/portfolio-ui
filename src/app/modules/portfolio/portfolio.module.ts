@@ -8,7 +8,7 @@ import { PortfolioPageComponent } from 'src/app/pages/portfolio-page/portfolio-p
 import { AboutComponent } from 'src/app/components/about/about.component';
 import { EducationComponent } from 'src/app/components/education/education.component';
 import { EducationListComponent } from '../../components/education-list/education-list.component';
-import { HeaderComponent, HeaderEditDialogComponent } from '../../components/header/header.component';
+import { HeaderComponent } from '../../components/header/header.component';
 import { HardSkillComponent } from '../../components/hard-skill/hard-skill.component';
 import { HardSkillListComponent } from '../../components/hard-skill-list/hard-skill-list.component';
 import { SoftSkillComponent } from '../../components/soft-skill/soft-skill.component';
@@ -20,6 +20,7 @@ import { LanguageComponent } from '../../components/language/language.component'
 import { ExperienceComponent } from '../../components/experience/experience.component';
 import { ExperienceListComponent } from '../../components/experience-list/experience-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit-dialog/header-edit-dialog.component';
 
 @NgModule({
   declarations: [

@@ -35,4 +35,9 @@ export class HeaderEditDialogComponent
     this.profileService.updateProfile(this.profile).subscribe( response => {});
     this.dialogRef.close();
   }
+
+  get role()
+  {
+    return this.profileForm.get("role");
+  }
 }

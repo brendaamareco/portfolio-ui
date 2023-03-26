@@ -18,6 +18,9 @@
       <mat-label>Rol</mat-label>
       <input matInput formControlName="role">
     </mat-form-field>
+    <mat-error *ngIf="role?.errors?.['required'] && role?.touched">
+      <span>Debe ingresar un rol</span>
+    </mat-error>
   </div>
 
   <mat-dialog-actions align="end">

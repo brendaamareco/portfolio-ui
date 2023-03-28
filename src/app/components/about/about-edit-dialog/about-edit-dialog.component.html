@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Editar Acerca de</h1>
+<form [formGroup]="aboutForm" (submit)="submitAbout()">
+    <mat-dialog-content class="mat-typography row">
+        <mat-form-field appearance="fill">
+            <mat-label>País</mat-label>
+            <input matInput formControlName="country" type="text">
+        </mat-form-field>
+        <mat-error *ngIf="country?.invalid && country?.touched">
+            <small>Debe ingresar un país</small>
+        </mat-error>
+        <mat-form-field appearance="fill">
+            <mat-label>Provincia</mat-label>
+            <input matInput formControlName="province" type="text">
+        </mat-form-field>
+        <mat-error *ngIf="province?.invalid && province?.touched">
+            <small>Debe ingresar una provincia</small>
+        </mat-error>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="aboutForm.invalid">Editar</button>
+    </mat-dialog-actions>
+
+</form>

@@ -21,6 +21,7 @@ import { ExperienceComponent } from '../../components/experience/experience.comp
 import { ExperienceListComponent } from '../../components/experience-list/experience-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit-dialog/header-edit-dialog.component';
+import { AboutEditDialogComponent } from '../../components/about/about-edit-dialog/about-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit
     LanguageListComponent,
     LanguageComponent,
     ExperienceComponent,
-    ExperienceListComponent
+    ExperienceListComponent,
+    AboutEditDialogComponent
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,9 @@
 import { Owner } from "./owner.interface";
 
-export interface Profile {
+export interface Project {
     id:          number;
-    thumbnail:   string;
-    welcomeText: string;
+    title:       string;
     description: string;
-    role:        string;
+    thumbnail:   string;
     owner:       Owner;
 }
-

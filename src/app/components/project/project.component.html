@@ -1,4 +1,4 @@
-<mat-card class="mb-2">
+<mat-card class="mb-2" *ngIf="project">
     <mat-card-header class="pb-1">
         <mat-card-actions class="w-100 d-flex justify-content-end">
             <button mat-icon-button>
@@ -12,12 +12,12 @@
 
     <mat-card-content class="pb-4 d-flex flex-column flex-md-row align-items-center">
         <div class="project-picture img-thumbnail">
-            <img mat-card-image src="https://blog.hubspot.com/hs-fs/hubfs/toggl-plan-project-management-software.jpeg" alt="Proyecto" width="100%">
+            <img mat-card-image [src]="project.thumbnail" alt="Proyecto" width="100%">
         </div>
         
         <div class="project-description px-4 py-2">
-            <mat-card-title class="fs-4 py-3">Nombre proyecto</mat-card-title>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit velit, obcaecati ipsam maxime iusto aliquam neque illo voluptatem laboriosam, assumenda nesciunt est distinctio placeat et consectetur dolorem mollitia suscipit accusamus.</p>
+            <mat-card-title class="fs-4 py-3">{{ project.title }}</mat-card-title>
+            <p>{{ project.description }}</p>
             <button mat-flat-button color="primary">
                 <mat-icon>visibility</mat-icon>
                 Ver

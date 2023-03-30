@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Profile, Owner } from 'src/app/models/profile.interface';
+import { Owner } from 'src/app/models/owner.interface';
+import { Profile } from 'src/app/models/profile.interface';
 import { ProfileService } from 'src/app/services/profile.service';
 import { AboutEditDialogComponent } from './about-edit-dialog/about-edit-dialog.component';
 

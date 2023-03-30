@@ -16,10 +16,9 @@ export class ProjectListComponent implements OnInit
   ngOnInit(): void 
   {
     this.projectService.getProjects().subscribe(
-      projects => { this.projectList = projects }
+      projects => { console.log(projects) }
     )
     
-    console.table(this.projectList);
   }
 
 }

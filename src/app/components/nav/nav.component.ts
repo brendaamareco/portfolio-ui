@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Owner } from 'src/app/models/owner.interface';
-import { ProfileService } from 'src/app/services/profile.service';
+import { OwnerService } from 'src/app/services/owner.service';
 
 @Component({
   selector: 'app-nav',
@@ -11,12 +11,12 @@ export class NavComponent implements OnInit {
 
   owner: Owner | undefined;
   
-  constructor(private profileService: ProfileService) {}
+  constructor(private ownerService: OwnerService) {}
 
   ngOnInit(): void {
     this
-    .profileService.getProfile(1)
-    .subscribe( profile => { this.owner = profile.owner; });
+    .ownerService.get()
+    .subscribe( owner => { this.owner = owner; });
   }
 
 }

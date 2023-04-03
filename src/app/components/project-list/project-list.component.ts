@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
-import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-dialog.component';
+import { ProjectAddDialogComponent } from './project-add-dialog/project-add-dialog.component';
 
 @Component({
   selector: 'app-project-list',
@@ -18,9 +18,9 @@ export class ProjectListComponent
     this.loadProjects();
   }
 
-  openEditDialog(): void 
+  openAddDialog(): void 
   {
-    this.dialog.open(ProjectEditDialogComponent).afterClosed().subscribe(() => this.loadProjects());
+    this.dialog.open(ProjectAddDialogComponent).afterClosed().subscribe(() => this.loadProjects());
   }
 
   loadProjects(): void

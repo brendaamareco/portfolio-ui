@@ -5,15 +5,15 @@ import { Project } from 'src/app/models/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
-  selector: 'app-project-edit-dialog',
-  templateUrl: './project-edit-dialog.component.html',
-  styleUrls: ['./project-edit-dialog.component.scss']
+  selector: 'app-project-add-dialog',
+  templateUrl: './project-add-dialog.component.html',
+  styleUrls: ['./project-add-dialog.component.scss']
 })
-export class ProjectEditDialogComponent {
+export class ProjectAddDialogComponent {
 
   projectForm: FormGroup = new FormGroup({});
 
-  constructor(private projectService: ProjectService, public dialogRef: MatDialogRef<ProjectEditDialogComponent>, private formBuilder: FormBuilder) 
+  constructor(private projectService: ProjectService, public dialogRef: MatDialogRef<ProjectAddDialogComponent>, private formBuilder: FormBuilder) 
   {
     this.projectForm = formBuilder.group(
       {

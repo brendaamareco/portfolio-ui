@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Editar perfil</h1>
-<form [formGroup]="profileForm" (submit)="submitProfile()">
+<form [formGroup]="ownerForm" (submit)="submit()">
   <div mat-dialog-content class="mat-typography row">
 
     <mat-form-field appearance="fill">
       <mat-label>URL Imagen</mat-label>
-      <img matPrefix [src]="profile.thumbnail" width="40px" class="pe-1 ps-2" />
+      <img matPrefix [src]="owner.thumbnail" width="40px" class="pe-1 ps-2" />
       <input matInput formControlName="thumbnail">
     </mat-form-field>
 
@@ -25,6 +25,6 @@
 
   <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close>Cancelar</button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="profileForm.invalid">Editar</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="ownerForm.invalid">Editar</button>
   </mat-dialog-actions>
 </form>

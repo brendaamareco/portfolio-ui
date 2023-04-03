@@ -1,7 +1,8 @@
 import { Component, Inject } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProfileService } from 'src/app/services/profile.service';
+import { Owner } from 'src/app/models/owner.interface';
+import { OwnerService } from 'src/app/services/owner.service';
 
 @Component({
   selector: 'app-header-edit-dialog',
@@ -10,33 +11,32 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class HeaderEditDialogComponent 
 {
-
-  profileForm: FormGroup = new FormGroup({});
+  ownerForm: FormGroup = new FormGroup({});
 
   constructor( public dialogRef: MatDialogRef<HeaderEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder, private profileService: ProfileService) 
+    @Inject(MAT_DIALOG_DATA) public owner: Owner, private formBuilder: FormBuilder, private ownerService: OwnerService) 
   {
-    this.profileForm = this.formBuilder.group(
+    this.ownerForm = this.formBuilder.group(
       {
-        thumbnail: [profile.thumbnail],
-        welcomeText: [profile.welcomeText],
-        role: [profile.role, Validators.required]
+        thumbnail: [owner.thumbnail],
+        welcomeText: [owner.welcomeText],
+        role: [owner.role, Validators.required]
       }
     )
   }
 
-  submitProfile(): void
+  submit(): void
   {
-    this.profile.thumbnail = this.profileForm.get("thumbnail")?.value;
-    this.profile.welcomeText = this.profileForm.get("welcomeText")?.value;
-    this.profile.role = this.profileForm.get("role")?.value;
+    this.owner.thumbnail = this.ownerForm.get("thumbnail")?.value;
+    this.owner.welcomeText = this.ownerForm.get("welcomeText")?.value;
+    this.owner.role = this.ownerForm.get("role")?.value;
 
-    this.profileService.updateProfile(this.profile).subscribe( response => {});
+    this.ownerService.update(this.owner).subscribe( response => {});
     this.dialogRef.close();
   }
 
   get role()
   {
-    return this.profileForm.get("role");
+    return this.ownerForm.get("role");
   }
 }

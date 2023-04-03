@@ -1,35 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from 'src/app/models/profile.interface';
-import { ProfileService } from 'src/app/services/profile.service';
 import { MatDialog } from '@angular/material/dialog';
 import { HeaderEditDialogComponent } from './header-edit-dialog/header-edit-dialog.component';
+import { OwnerService } from 'src/app/services/owner.service';
+import { Owner } from 'src/app/models/owner.interface';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  profile: Profile | undefined;
+export class HeaderComponent implements OnInit 
+{
+  owner: Owner | undefined;
 
-  constructor(private profileService: ProfileService, public dialog: MatDialog) {}
+  constructor(private ownerService: OwnerService, public dialog: MatDialog) {}
 
   ngOnInit(): void 
   {
-    this.loadProfile();
+    this.loadOwner();
   }
 
   openEditDialog(): void 
   {
     this.dialog.open(HeaderEditDialogComponent, {
-      data: this.profile,
+      data: this.owner,
     });
   }
 
-  loadProfile(): void
+  loadOwner(): void
   {
-    this.profileService
-      .getProfile(1)
-      ?.subscribe((profile) => (this.profile = profile));
+    this.ownerService
+      .get()
+      ?.subscribe((owner) => (this.owner = owner));
   }
 }

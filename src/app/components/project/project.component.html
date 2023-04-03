@@ -18,10 +18,10 @@
         <div class="project-description px-4 py-2">
             <mat-card-title class="fs-4 py-3">{{ project.title }}</mat-card-title>
             <p>{{ project.description }}</p>
-            <button mat-flat-button color="primary">
+            <a [href]="project.projectUrl" mat-flat-button color="primary">
                 <mat-icon>visibility</mat-icon>
                 Ver
-            </button>
+            </a>
         </div>
     </mat-card-content>
 

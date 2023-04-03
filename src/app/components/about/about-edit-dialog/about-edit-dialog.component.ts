@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Profile } from 'src/app/models/profile.interface';
-import { ProfileService } from 'src/app/services/profile.service';
+import { Owner } from 'src/app/models/owner.interface';
+import { OwnerService } from 'src/app/services/owner.service';
 
 @Component({
   selector: 'app-about-edit-dialog',
@@ -14,23 +14,23 @@ export class AboutEditDialogComponent
   aboutForm: FormGroup = new FormGroup({});
 
   constructor(public dialogRef: MatDialogRef<AboutEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public profile: Profile, private formBuilder: FormBuilder, private profileService: ProfileService) 
+    @Inject(MAT_DIALOG_DATA) public owner: Owner, private formBuilder: FormBuilder, private ownerService: OwnerService) 
     {
       this.aboutForm = this.formBuilder.group(
       {
-        description: [profile.description],
-        country: [profile.owner.country, Validators.required],
-        province: [profile.owner.province, Validators.required]
+        description: [owner.description],
+        country: [owner.country, Validators.required],
+        province: [owner.province, Validators.required]
       });
     }
 
     submitAbout() 
     {
-      this.profile.description = this.aboutForm.get('description')?.value;
-      this.profile.owner.country = this.aboutForm.get('country')?.value;
-      this.profile.owner.province = this.aboutForm.get('province')?.value;
+      this.owner.description = this.aboutForm.get('description')?.value;
+      this.owner.country = this.aboutForm.get('country')?.value;
+      this.owner.province = this.aboutForm.get('province')?.value;
 
-      this.profileService.updateProfile(this.profile).subscribe(response => {});
+      this.ownerService.update(this.owner).subscribe(response => {});
       this.dialogRef.close();
     }
   

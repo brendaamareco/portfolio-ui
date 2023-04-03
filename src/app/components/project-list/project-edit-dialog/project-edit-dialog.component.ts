@@ -38,7 +38,7 @@ export class ProjectEditDialogComponent {
       projectUrl: this.projectForm.get('projectUrl')?.value
     }
 
-    this.projectService.addProject(project);
+    this.projectService.addProject(project).subscribe(project => {});
     this.dialogRef.close(); 
   }
 }

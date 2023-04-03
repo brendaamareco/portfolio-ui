@@ -19,7 +19,8 @@ export class ProjectEditDialogComponent {
       {
         title: ['', Validators.compose([Validators.required, Validators.maxLength(32)]) ],
         description: [''],
-        thumbnail: ['']
+        thumbnail: [''],
+        projectUrl: ['']
       });
   }
 
@@ -33,7 +34,8 @@ export class ProjectEditDialogComponent {
     let project: Project = {
       title: this.projectForm.get('title')?.value,
       description: this.projectForm.get('description')?.value,
-      thumbnail: this.projectForm.get('thumbnail')?.value
+      thumbnail: this.projectForm.get('thumbnail')?.value,
+      projectUrl: this.projectForm.get('projectUrl')?.value
     }
 
     this.projectService.addProject(project);

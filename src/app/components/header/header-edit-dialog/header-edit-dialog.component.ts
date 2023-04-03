@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Profile } from 'src/app/models/profile.interface';
 import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({

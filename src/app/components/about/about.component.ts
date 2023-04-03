@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Owner } from 'src/app/models/owner.interface';
-import { Profile } from 'src/app/models/profile.interface';
-import { ProfileService } from 'src/app/services/profile.service';
 import { AboutEditDialogComponent } from './about-edit-dialog/about-edit-dialog.component';
+import { OwnerService } from 'src/app/services/owner.service';
+import { Owner } from 'src/app/models/owner.interface';
 
 @Component({
   selector: 'app-about',
@@ -12,21 +11,19 @@ import { AboutEditDialogComponent } from './about-edit-dialog/about-edit-dialog.
 })
 export class AboutComponent implements OnInit {
 
-  profile: Profile | undefined;
   owner: Owner | undefined;
   
-  constructor(private profileService: ProfileService, public dialog: MatDialog){}
+  constructor(private ownerService: OwnerService, public dialog: MatDialog){}
 
   ngOnInit(): void {
-    this.profileService.getProfile(1).subscribe(
-      profile => { this.profile = profile;
-                    this.owner = profile.owner }
+    this.ownerService.get().subscribe(
+      owner => { this.owner = owner; }
     )
   }
 
   openEditDialog() 
   {
-    this.dialog.open(AboutEditDialogComponent, { data: this.profile })
+    this.dialog.open(AboutEditDialogComponent, { data: this.owner })
   }
 
 }

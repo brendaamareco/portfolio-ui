@@ -9,22 +9,25 @@ import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-d
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
 })
-export class ProjectListComponent implements OnInit  
+export class ProjectListComponent  
 {
   projectList: Project[] = [];
 
-  constructor(public projectService: ProjectService, public dialog: MatDialog) {}
-
-  ngOnInit(): void 
+  constructor(public projectService: ProjectService, public dialog: MatDialog) 
   {
-    this.projectService.getProjects().subscribe(
-      projects => { this.projectList = projects }
-    )
+    this.loadProjects();
   }
 
   openEditDialog(): void 
   {
-    this.dialog.open(ProjectEditDialogComponent);
+    this.dialog.open(ProjectEditDialogComponent).afterClosed().subscribe(() => this.loadProjects());
+  }
+
+  loadProjects(): void
+  {
+    this.projectService.getProjects().subscribe(
+      projects => { this.projectList = projects }
+    )
   }
 
 }

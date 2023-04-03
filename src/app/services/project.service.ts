@@ -14,4 +14,9 @@ export class ProjectService {
   {
     return this.httpClient.get<Project[]>("http://localhost:8080/api/projects");
   }
+
+  addProject(project: Project): Observable<Project>
+  {
+    return this.httpClient.post<Project>("http://localhost:8080/api/projects", project);
+  }
 }

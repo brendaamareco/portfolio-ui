@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Project } from 'src/app/models/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
@@ -27,5 +28,15 @@ export class ProjectEditDialogComponent {
     return this.projectForm.get('title');
   }
 
-  submitProject():void { this.dialogRef.close(); }
+  submitProject():void 
+  { 
+    let project: Project = {
+      title: this.projectForm.get('title')?.value,
+      description: this.projectForm.get('description')?.value,
+      thumbnail: this.projectForm.get('thumbnail')?.value
+    }
+
+    this.projectService.addProject(project);
+    this.dialogRef.close(); 
+  }
 }

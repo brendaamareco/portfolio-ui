@@ -1,7 +1,7 @@
 import { Owner } from "./owner.interface";
 
 export interface Project {
-    id:          number;
+    id?:         number;
     title:       string;
     description: string;
     thumbnail:   string;

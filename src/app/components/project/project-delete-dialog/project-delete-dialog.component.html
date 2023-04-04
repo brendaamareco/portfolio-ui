@@ -1,1 +1,10 @@
-<p>project-delete-dialog works!</p>
+<h1 mat-dialog-title>Borrar proyecto</h1>
+<mat-dialog-content>
+    <span>¿Estás seguro de que quiere borrar el proyecto </span>
+    <strong>{{projectTitle}}</strong>
+    <span>?</span>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="deleteProject()">Borrar</button>
+</mat-dialog-actions>

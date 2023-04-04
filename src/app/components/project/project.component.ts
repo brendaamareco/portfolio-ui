@@ -26,6 +26,9 @@ export class ProjectComponent
 
   openDeleteDialog(): void
   {
-    this.dialog.open(ProjectDeleteDialogComponent);
+    this.dialog
+    .open(ProjectDeleteDialogComponent, { data: this.project })
+    .afterClosed()
+    .subscribe(() => this.projectEditedEvent.emit());
   }
 }

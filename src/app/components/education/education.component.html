@@ -12,17 +12,17 @@
         <div mat-card-avatar>
             <img [src]="education?.thumbnail" alt="ungs" width="100%" class="rounded-2 img-thumbnail">
         </div>
-        <mat-card-title class="fs-6">education?.institution</mat-card-title>
+        <mat-card-title class="fs-6">{{education?.institution}}</mat-card-title>
         <mat-card-subtitle class="text-start">
-            <p>education?.title</p>
-            <span>education?.startDate</span>
+            <p>{{education?.title}}</p>
+            <span>{{education?.startDate | date:'yyyy'}}</span>
             <span> - </span>
-            <span>education?.endDate</span>
+            <span>{{education?.endDate | date:'yyyy'}}</span>
         </mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content class="pb-4 col-12 col-sm-11">
-        <p>education?.description</p>
+        <p class="pt-3">{{education?.description}}</p>
     </mat-card-content>
 
 </mat-card>

@@ -20,6 +20,7 @@ export class ProjectDeleteDialogComponent
 
   deleteProject(): void
   {
-    console.log("Project deleted");
+    this.projectService.deleteProject(this.project.id).subscribe(data => {});
+    this.dialog.close();
   }
 }

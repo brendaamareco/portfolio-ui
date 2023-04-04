@@ -25,7 +25,7 @@ export class ProjectService {
     return this.httpClient.put<Project>("http://localhost:8080/api/projects", project);
   }
 
-  deleteProject(projectId: string): Observable<Project>
+  deleteProject(projectId: number | undefined): Observable<Project>
   {
     return this.httpClient.delete<Project>(`http://localhost:8080/api/projects/${projectId}`);
   }

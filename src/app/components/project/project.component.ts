@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-dialog.component';
+import { ProjectDeleteDialogComponent } from './project-delete-dialog/project-delete-dialog.component';
 
 @Component({
   selector: 'app-project',
@@ -21,5 +22,10 @@ export class ProjectComponent
     .open(ProjectEditDialogComponent, { data: this.project })
     .afterClosed()
     .subscribe(() => this.projectEditedEvent.emit());
+  }
+
+  openDeleteDialog(): void
+  {
+    this.dialog.open(ProjectDeleteDialogComponent);
   }
 }

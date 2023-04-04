@@ -24,6 +24,7 @@ import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit
 import { AboutEditDialogComponent } from '../../components/about/about-edit-dialog/about-edit-dialog.component';
 import { ProjectAddDialogComponent } from '../../components/project-list/project-add-dialog/project-add-dialog.component';
 import { ProjectEditDialogComponent } from '../../components/project/project-edit-dialog/project-edit-dialog.component';
+import { ProjectDeleteDialogComponent } from '../../components/project/project-delete-dialog/project-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ProjectEditDialogComponent } from '../../components/project/project-edi
     ExperienceListComponent,
     AboutEditDialogComponent,
     ProjectAddDialogComponent,
-    ProjectEditDialogComponent
+    ProjectEditDialogComponent,
+    ProjectDeleteDialogComponent
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit-dialog/header-edit-dialog.component';
 import { AboutEditDialogComponent } from '../../components/about/about-edit-dialog/about-edit-dialog.component';
 import { ProjectAddDialogComponent } from '../../components/project-list/project-add-dialog/project-add-dialog.component';
+import { ProjectEditDialogComponent } from '../../components/project/project-edit-dialog/project-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ProjectAddDialogComponent } from '../../components/project-list/project
     ExperienceComponent,
     ExperienceListComponent,
     AboutEditDialogComponent,
-    ProjectAddDialogComponent
+    ProjectAddDialogComponent,
+    ProjectEditDialogComponent
   ],
   imports: [
     CommonModule,

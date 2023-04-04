@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-dialog.component';
@@ -11,11 +11,15 @@ import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-d
 export class ProjectComponent 
 {
   @Input() project: Project | undefined;
+  @Output() projectEditedEvent = new EventEmitter<string>();
 
   constructor(public dialog: MatDialog){}
 
   openEditDialog(): void
   {
-    this.dialog.open(ProjectEditDialogComponent, { data: this.project });
+    this.dialog
+    .open(ProjectEditDialogComponent, { data: this.project })
+    .afterClosed()
+    .subscribe(() => this.projectEditedEvent.emit());
   }
 }

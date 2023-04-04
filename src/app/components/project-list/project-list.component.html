@@ -10,7 +10,7 @@
     </mat-card-header>
 
     <mat-card-content class="pb-4 pt-2 text-start" *ngFor="let project of projectList">
-        <app-project [project]="project"></app-project>
+        <app-project [project]="project" (projectEditedEvent)="loadProjects()"></app-project>
     </mat-card-content>
 
 </mat-card>

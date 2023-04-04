@@ -26,9 +26,20 @@ export class ProjectEditDialogComponent {
     }
 
     get title() { return this.projectEditForm.get("title"); }
-
+    get description() { return this.projectEditForm.get("description"); }
+    get thumbnail() { return this.projectEditForm.get("thumbnail"); }
+    get projectUrl() { return this.projectEditForm.get("projectUrl"); }    
+    
     submitProject()
     {
-      console.log("project submitted");
+      this.projectService.updateProject({
+        id: this.project.id,
+        title: this.title?.value,
+        description: this.description?.value,
+        thumbnail: this.thumbnail?.value,
+        projectUrl: this.projectUrl?.value
+      }).subscribe(project => {});
+
+      this.dialogRef.close();
     }
 }

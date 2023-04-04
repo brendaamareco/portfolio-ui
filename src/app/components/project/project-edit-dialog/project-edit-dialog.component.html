@@ -1,1 +1,36 @@
-<p>project-edit-dialog works!</p>
+<h1 mat-dialog-title>Editar proyecto</h1>
+<form [formGroup]="this.projectEditForm" (submit)="submitProject()">
+    <mat-dialog-content class="mat-typography row">
+
+        <mat-form-field>
+            <mat-label>Título</mat-label>
+            <input matInput type="text" formControlName="title"/>
+        </mat-form-field>
+        <mat-error *ngIf="title?.errors?.['required'] && title?.touched">
+            <small>Debe ingresar un título</small>
+        </mat-error>
+        <mat-error *ngIf="title?.errors?.['maxlength']">
+            <small>El título es demasiado largo</small>
+        </mat-error>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <input matInput formControlName="description" type="text"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>URL Imagen</mat-label>
+            <input matInput formControlName="thumbnail" type="text"/>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>URL Proyecto</mat-label>
+            <input matInput formControlName="projectUrl" type="text"/>
+        </mat-form-field>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="projectEditForm.invalid">Editar</button>
+    </mat-dialog-actions>
+</form>

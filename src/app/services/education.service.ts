@@ -1,9 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Education } from '../models/education.interface';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EducationService {
+export class EducationService 
+{
+  rootUrl: string = "http://localhost:8080/api/";
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
+
+  getEducationList(): Observable<Education[]>
+  {
+    return this.httpClient.get<Education[]>(this.rootUrl + "education");
+  }
 }

@@ -24,6 +24,34 @@ export class EducationAddDialogComponent
     })
   }
 
+  get institution()
+  {
+    return this.educationAddForm.get('institution');
+  }
 
+  get title()
+  {
+    return this.educationAddForm.get('title');
+  }
+
+  get description()
+  {
+    return this.educationAddForm.get('description');
+  }
+
+  get thumbnail()
+  {
+    return this.educationAddForm.get('thumbnail');
+  }
+
+  get startDate()
+  {
+    return this.educationAddForm.get('startDate');
+  }
+
+  get endDate()
+  {
+    return this.educationAddForm.get('endDate');
+  }
 
 }

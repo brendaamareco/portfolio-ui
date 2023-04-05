@@ -1,12 +1,41 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ViewEncapsulation} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { EducationService } from 'src/app/services/education.service';
+import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from '@angular/material/core';
+import {MatDatepicker} from '@angular/material/datepicker';
+
+import * as _moment from 'moment';
+import {default as _rollupMoment, Moment} from 'moment';
+
+const moment = _rollupMoment || _moment;
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @Component({
   selector: 'app-education-add-dialog',
   templateUrl: './education-add-dialog.component.html',
-  styleUrls: ['./education-add-dialog.component.scss']
+  styleUrls: ['./education-add-dialog.component.scss'],
+  providers: [ 
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}
+  ],
+  encapsulation: ViewEncapsulation.None
 })
 export class EducationAddDialogComponent 
 {
@@ -14,44 +43,54 @@ export class EducationAddDialogComponent
 
   constructor(public dialogRef: MatDialogRef<EducationAddDialogComponent>, private formBuilder: FormBuilder, private educationService: EducationService) 
   {
-    this.educationAddForm = formBuilder.group({
-      institution: ['', Validators.required],
-      title: ['', Validators.required],
-      description: [''],
-      thumbnail: [''],
-      startDate: [Date.now(), Validators.required],
-      endDate: [Date.now(), Validators.required]
-    })
+    this.educationAddForm = formBuilder.group(
+      {
+        institution: ['', Validators.required],
+        title: ['', Validators.required],
+        description: [''],
+        thumbnail: [''],
+        startDate: [moment(), Validators.required],
+        endDate: [moment(), Validators.required]
+      });
   }
 
   get institution()
   {
-    return this.educationAddForm.get('institution');
+    return this.educationAddForm?.get('institution') as FormControl;
   }
 
   get title()
   {
-    return this.educationAddForm.get('title');
+    return this.educationAddForm.get('title') as FormControl;
   }
 
   get description()
   {
-    return this.educationAddForm.get('description');
+    return this.educationAddForm.get('description') as FormControl;
   }
 
   get thumbnail()
   {
-    return this.educationAddForm.get('thumbnail');
+    return this.educationAddForm.get('thumbnail') as FormControl;
   }
 
   get startDate()
   {
-    return this.educationAddForm.get('startDate');
+    return this.educationAddForm.get('startDate') as FormControl;
   }
 
   get endDate()
   {
-    return this.educationAddForm.get('endDate');
+    return this.educationAddForm.get('endDate') as FormControl;
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
+  {
+    const ctrlValue = formControl.value;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    formControl.setValue(ctrlValue);
+    datepicker.close();
   }
 
 }

@@ -25,6 +25,7 @@ import { AboutEditDialogComponent } from '../../components/about/about-edit-dial
 import { ProjectAddDialogComponent } from '../../components/project-list/project-add-dialog/project-add-dialog.component';
 import { ProjectEditDialogComponent } from '../../components/project/project-edit-dialog/project-edit-dialog.component';
 import { ProjectDeleteDialogComponent } from '../../components/project/project-delete-dialog/project-delete-dialog.component';
+import { EducationAddDialogComponent } from '../../components/education-list/education-add-dialog/education-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ProjectDeleteDialogComponent } from '../../components/project/project-d
     AboutEditDialogComponent,
     ProjectAddDialogComponent,
     ProjectEditDialogComponent,
-    ProjectDeleteDialogComponent
+    ProjectDeleteDialogComponent,
+    EducationAddDialogComponent
   ],
   imports: [
     CommonModule,

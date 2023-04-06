@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Education } from 'src/app/models/education.interface';
 import { EducationEditDialogComponent } from './education-edit-dialog/education-edit-dialog.component';
+import { EducationDeleteDialogComponent } from './education-delete-dialog/education-delete-dialog.component';
 
 @Component({
   selector: 'app-education',
@@ -19,6 +20,14 @@ export class EducationComponent
   {
     this.dialog
     .open(EducationEditDialogComponent, { data: this.education })
+    .afterClosed()
+    .subscribe(() => { this.educationEdited.emit() });
+  }
+
+  openDeleteDialog(): void
+  {
+    this.dialog
+    .open(EducationDeleteDialogComponent, { data: this.education } )
     .afterClosed()
     .subscribe(() => { this.educationEdited.emit() });
   }

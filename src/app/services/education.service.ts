@@ -21,4 +21,9 @@ export class EducationService
   {
     return this.httpClient.post<Education>(this.rootUrl + "education", education);
   }
+
+  updateEducation(education: Education): Observable<Education>
+  {
+    return this.httpClient.put<Education>(this.rootUrl + "education", education);
+  }
 }

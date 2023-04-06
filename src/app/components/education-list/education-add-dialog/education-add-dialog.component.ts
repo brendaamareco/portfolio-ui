@@ -93,4 +93,18 @@ export class EducationAddDialogComponent
     datepicker.close();
   }
 
+  submit(): void
+  {
+    this.educationService.addEducation(
+      {
+        institution: this.institution.value,
+        title: this.title.value,
+        description: this.description.value,
+        thumbnail: this.thumbnail.value,
+        startDate: this.startDate.value,
+        endDate: this.endDate.value
+      }).subscribe((education) => {});
+
+    this.dialogRef.close();
+  }
 }

@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Agregar educación</h1>
-<form [formGroup]="educationAddForm">
+<form [formGroup]="educationAddForm" (submit)="submit()">
     <mat-dialog-content class="mat-typography row">
 
         <mat-form-field appearance="fill">

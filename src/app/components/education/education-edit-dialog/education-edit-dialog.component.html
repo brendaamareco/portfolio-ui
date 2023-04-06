@@ -1,1 +1,63 @@
-<p>education-edit-dialog works!</p>
+<h1 mat-dialog-title>Editar educación</h1>
+<form [formGroup]="educationEditForm">
+    <mat-dialog-content class="mat-typography row">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Institución</mat-label>
+            <input matInput [formControl]="institution" type="text">
+        </mat-form-field>
+        <mat-error *ngIf="institution?.errors?.['required'] && institution?.touched">
+            <small>Debe ingresar una institución</small>
+        </mat-error>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Título</mat-label>
+            <input matInput [formControl]="title" type="text">
+        </mat-form-field>
+        <mat-error *ngIf="title?.errors?.['required'] && title?.touched">
+            <small>Debe ingresar un título</small>
+        </mat-error>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput [formControl]="description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>URL Imagen</mat-label>
+            <input matInput [formControl]="thumbnail" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de inicio</mat-label>
+            <input matInput [matDatepicker]="dStart" [formControl]="startDate">
+            <mat-hint>MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="dStart"></mat-datepicker-toggle>
+            <mat-datepicker #dStart
+                            startView="multi-year"
+                            (monthSelected)="setMonthAndYear($event, dStart, startDate)"
+                            panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha de finalización</mat-label>
+            <input matInput [matDatepicker]="dEnd" [formControl]="endDate">
+            <mat-hint>MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="dEnd"></mat-datepicker-toggle>
+            <mat-datepicker #dEnd
+                            startView="multi-year"
+                            (monthSelected)="setMonthAndYear($event, dEnd, endDate)"
+                            panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
+
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" 
+        [disabled]="educationEditForm.invalid">Editar</button>
+    </mat-dialog-actions>
+</form>

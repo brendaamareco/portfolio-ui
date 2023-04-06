@@ -22,5 +22,7 @@ export class EducationDeleteDialogComponent
     this.educationService
     .deleteEducation(this.education.id)
     .subscribe( () => {});
+
+    this.dialogRef.close();
   }
 }

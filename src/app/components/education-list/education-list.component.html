@@ -9,6 +9,6 @@
         </button>
     </mat-card-header>
     <mat-card-content class="pb-4 pt-2 text-start" *ngFor="let education of educationList">
-        <app-education [education]="education"></app-education>
+        <app-education [education]="education" (educationEdited)="loadEducationList()"></app-education>
     </mat-card-content>
 </mat-card>

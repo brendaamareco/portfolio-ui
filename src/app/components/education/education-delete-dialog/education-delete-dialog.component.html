@@ -1,1 +1,10 @@
-<p>education-delete-dialog works!</p>
+<h1 mat-dialog-title>Borrar educación</h1>
+<mat-dialog-content>
+    <span>¿Estás seguro de que quiere borrar la educación </span>
+    <strong>{{educationDetails}}</strong>
+    <span>?</span>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="deleteEducation()">Borrar</button>
+</mat-dialog-actions>

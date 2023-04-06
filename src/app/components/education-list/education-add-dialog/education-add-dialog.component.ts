@@ -97,6 +97,7 @@ export class EducationAddDialogComponent
   {
     this.educationService.addEducation(
       {
+        id: -1,
         institution: this.institution.value,
         title: this.title.value,
         description: this.description.value,

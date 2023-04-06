@@ -55,6 +55,31 @@ export class EducationEditDialogComponent
       });
   }
 
+  submit(): void
+  {
+    this.educationService.updateEducation(
+      {
+        id: this.education.id,
+        institution: this.institution.value,
+        title: this.title.value,
+        description: this.description.value,
+        thumbnail: this.thumbnail.value,
+        startDate: this.startDate.value,
+        endDate: this.endDate.value
+      }).subscribe(() => {});
+
+    this.dialogRef.close();
+  }
+
+  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
+  {
+    const ctrlValue = formControl.value;
+    ctrlValue.month(normalizedMonthAndYear.month());
+    ctrlValue.year(normalizedMonthAndYear.year());
+    formControl.setValue(ctrlValue);
+    datepicker.close();
+  }
+
   get institution()
   {
     return this.educationEditForm?.get('institution') as FormControl;
@@ -83,14 +108,5 @@ export class EducationEditDialogComponent
   get endDate()
   {
     return this.educationEditForm.get('endDate') as FormControl;
-  }
-
-  setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
-  {
-    const ctrlValue = formControl.value;
-    ctrlValue.month(normalizedMonthAndYear.month());
-    ctrlValue.year(normalizedMonthAndYear.year());
-    formControl.setValue(ctrlValue);
-    datepicker.close();
   }
 }

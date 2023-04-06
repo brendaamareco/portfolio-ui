@@ -26,4 +26,9 @@ export class EducationService
   {
     return this.httpClient.put<Education>(this.rootUrl + "education", education);
   }
+
+  deleteEducation(educationId: number): Observable<Education>
+  {
+    return this.httpClient.delete<Education>(this.rootUrl + "education/" + educationId);
+  }
 }

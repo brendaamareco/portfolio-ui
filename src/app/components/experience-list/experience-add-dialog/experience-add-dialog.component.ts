@@ -56,6 +56,23 @@ export class ExperienceAddDialogComponent
         });
     }
 
+    submit(): void
+    {
+      this.experienceService
+      .addExperience(
+        {
+          title: this.title.value,
+          description: this.description.value,
+          thumbnail: this.thumbnail.value,
+          startDate: this.startDate.value,
+          endDate: this.endDate.value,
+          companyName: this.companyName.value
+        })
+      .subscribe( () => {});
+
+      this.dialogRef.close();
+    }
+
     setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
     {
       const ctrlValue = formControl.value;

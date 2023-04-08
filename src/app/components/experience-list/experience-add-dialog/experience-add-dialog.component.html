@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Agregar experiencia</h1>
 
-<form [formGroup]="addExperienceForm">
+<form [formGroup]="addExperienceForm" (submit)="submit()">
     <mat-dialog-content class="mat-typography row">
 
         <mat-form-field appearance="fill">

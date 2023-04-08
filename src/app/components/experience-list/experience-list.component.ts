@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Experience } from 'src/app/models/experience.interface';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { ExperienceAddDialogComponent } from './experience-add-dialog/experience-add-dialog.component';
 
 @Component({
   selector: 'app-experience-list',
@@ -11,7 +13,7 @@ export class ExperienceListComponent
 {
   experienceList: Experience[] = [];
 
-  constructor(private experienceService: ExperienceService) 
+  constructor(private experienceService: ExperienceService, public dialog: MatDialog) 
   {
     this.loadExperienceList();
   }
@@ -21,5 +23,13 @@ export class ExperienceListComponent
     this.experienceService
     .getExperienceList()
     .subscribe( experienceList => { this.experienceList = experienceList });
+  }
+
+  openAddDialog(): void
+  {
+    this.dialog
+    .open(ExperienceAddDialogComponent)
+    .afterClosed()
+    .subscribe( () => { this.loadExperienceList() });
   }
 }

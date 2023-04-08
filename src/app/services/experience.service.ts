@@ -17,4 +17,9 @@ export class ExperienceService {
     return this.httpClient.get<Experience[]>(this.rootUrl + "experience");
   }
 
+  addExperience(experience: Experience): Observable<Experience>
+  {
+    return this.httpClient.post<Experience>(this.rootUrl + "experience", experience);
+  }
+
 }

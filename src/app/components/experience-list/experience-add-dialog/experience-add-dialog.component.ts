@@ -64,4 +64,34 @@ export class ExperienceAddDialogComponent
       formControl.setValue(ctrlValue);
       datepicker.close();
     }
+
+    get title()
+    {
+      return this.addExperienceForm.get('title') as FormControl;
+    }
+
+    get description()
+    {
+      return this.addExperienceForm.get('description') as FormControl;
+    }
+
+    get thumbnail()
+    {
+      return this.addExperienceForm.get('thumbnail') as FormControl;
+    }
+
+    get startDate()
+    {
+      return this.addExperienceForm.get('startDate') as FormControl;
+    }
+
+    get endDate()
+    {
+      return this.addExperienceForm.get('endDate') as FormControl;
+    }
+
+    get companyName()
+    {
+      return this.addExperienceForm.get('companyName') as FormControl;
+    }
 }

@@ -29,6 +29,7 @@ import { EducationAddDialogComponent } from '../../components/education-list/edu
 import { EducationEditDialogComponent } from '../../components/education/education-edit-dialog/education-edit-dialog.component';
 import { EducationDeleteDialogComponent } from '../../components/education/education-delete-dialog/education-delete-dialog.component';
 import { ExperienceAddDialogComponent } from '../../components/experience-list/experience-add-dialog/experience-add-dialog.component';
+import { ExperienceEditDialogComponent } from 'src/app/components/experience/experience-edit-dialog/experience-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ExperienceAddDialogComponent } from '../../components/experience-list/e
     EducationAddDialogComponent,
     EducationEditDialogComponent,
     EducationDeleteDialogComponent,
-    ExperienceAddDialogComponent
+    ExperienceAddDialogComponent,
+    ExperienceEditDialogComponent
   ],
   imports: [
     CommonModule,

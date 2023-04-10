@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SoftSkill } from 'src/app/models/softSkill.interface';
 import { SoftSkillService } from 'src/app/services/soft-skill.service';
 
 @Component({
@@ -7,7 +8,17 @@ import { SoftSkillService } from 'src/app/services/soft-skill.service';
   styleUrls: ['./soft-skill-list.component.scss']
 })
 export class SoftSkillListComponent {
-  constructor(private softSkillService: SoftSkillService) {
-    this.softSkillService.getSkills().subscribe(skills => console.log(skills));
+  softSkillList: SoftSkill[] = [];
+  
+  constructor(private softSkillService: SoftSkillService) 
+  {
+    this.loadSkills();
+  }
+
+  loadSkills(): void
+  {
+    this.softSkillService
+    .getSkills()
+    .subscribe(skills => this.softSkillList = skills);
   }
 }

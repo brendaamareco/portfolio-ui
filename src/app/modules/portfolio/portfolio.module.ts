@@ -30,6 +30,7 @@ import { EducationEditDialogComponent } from '../../components/education/educati
 import { EducationDeleteDialogComponent } from '../../components/education/education-delete-dialog/education-delete-dialog.component';
 import { ExperienceAddDialogComponent } from '../../components/experience-list/experience-add-dialog/experience-add-dialog.component';
 import { ExperienceEditDialogComponent } from 'src/app/components/experience/experience-edit-dialog/experience-edit-dialog.component';
+import { ExperienceDeleteDialogComponent } from 'src/app/components/experience/experience-delete-dialog/experience-delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ExperienceEditDialogComponent } from 'src/app/components/experience/exp
     EducationEditDialogComponent,
     EducationDeleteDialogComponent,
     ExperienceAddDialogComponent,
-    ExperienceEditDialogComponent
+    ExperienceEditDialogComponent,
+    ExperienceDeleteDialogComponent
   ],
   imports: [
     CommonModule,

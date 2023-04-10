@@ -27,4 +27,9 @@ export class ExperienceService {
     return this.httpClient.put<Experience>(this.rootUrl + "experience", experience);
   }
 
+  deleteExperience(experienceId: number): Observable<Experience>
+  {
+    return this.httpClient.delete<Experience>(this.rootUrl + "experience/" + experienceId);
+  }
+
 }

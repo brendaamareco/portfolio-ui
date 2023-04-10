@@ -22,4 +22,9 @@ export class ExperienceService {
     return this.httpClient.post<Experience>(this.rootUrl + "experience", experience);
   }
 
+  updateExperience(experience: Experience): Observable<Experience>
+  {
+    return this.httpClient.put<Experience>(this.rootUrl + "experience", experience);
+  }
+
 }

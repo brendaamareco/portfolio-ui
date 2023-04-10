@@ -9,6 +9,6 @@
         </button>
     </mat-card-header>
     <mat-card-content class="pb-4 pt-2 text-start" *ngFor="let experience of experienceList">
-        <app-experience [experience]="experience"></app-experience>
+        <app-experience [experience]="experience" (experienceChanged)="loadExperienceList()"></app-experience>
     </mat-card-content>
 </mat-card>

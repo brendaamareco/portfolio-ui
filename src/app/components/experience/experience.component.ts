@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Experience } from 'src/app/models/experience.interface';
 import { ExperienceEditDialogComponent } from './experience-edit-dialog/experience-edit-dialog.component';
+import { ExperienceDeleteDialogComponent } from './experience-delete-dialog/experience-delete-dialog.component';
 
 @Component({
   selector: 'app-experience',
@@ -17,8 +18,18 @@ export class ExperienceComponent
 
   openEditDialog(): void
   {
+    this.openDialog(ExperienceEditDialogComponent);
+  }
+
+  openDeleteDialog(): void
+  {
+    this.openDialog(ExperienceDeleteDialogComponent);
+  }
+
+  openDialog(component: any): void
+  {
     this.dialog
-    .open(ExperienceEditDialogComponent, { data: this.experience })
+    .open(component, { data: this.experience })
     .afterClosed()
     .subscribe(() => { this.experienceChanged.emit(); });
   }

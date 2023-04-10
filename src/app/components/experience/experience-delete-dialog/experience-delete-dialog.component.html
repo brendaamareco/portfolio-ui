@@ -1,1 +1,10 @@
-<p>experience-delete-dialog works!</p>
+<h1 mat-dialog-title>Borrar experiencia</h1>
+<mat-dialog-content>
+    <span>¿Estás seguro de que quiere borrar la experiencia </span>
+    <strong>{{experienceDetails}}</strong>
+    <span>?</span>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="deleteExperience()">Borrar</button>
+</mat-dialog-actions>

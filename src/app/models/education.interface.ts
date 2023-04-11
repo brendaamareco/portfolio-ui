@@ -1,3 +1,5 @@
+import { DateRange } from "./dateRange.interface";
+
 export interface Education
 {
     id?: number;
@@ -5,6 +7,5 @@ export interface Education
     title: string;
     description: string;
     thumbnail: string;
-    startDate: Date;
-    endDate: Date
+    dateRange: DateRange
 }

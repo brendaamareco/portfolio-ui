@@ -64,8 +64,11 @@ export class ExperienceAddDialogComponent
           title: this.title.value,
           description: this.description.value,
           thumbnail: this.thumbnail.value,
-          startDate: this.startDate.value,
-          endDate: this.endDate.value,
+          dateRange:
+          {
+            startDate: this.startDate.value,
+            endDate: this.endDate.value,
+          },
           companyName: this.companyName.value
         })
       .subscribe( () => {});

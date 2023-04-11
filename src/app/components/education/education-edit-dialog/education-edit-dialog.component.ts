@@ -50,8 +50,8 @@ export class EducationEditDialogComponent
         title: [this.education.title, Validators.required],
         description: [this.education.description],
         thumbnail: [this.education.thumbnail],
-        startDate: [this.education.startDate, Validators.required],
-        endDate: [this.education.endDate, Validators.required]
+        startDate: [this.education.dateRange?.startDate, Validators.required],
+        endDate: [this.education.dateRange?.endDate, Validators.required]
       });
   }
 
@@ -64,8 +64,10 @@ export class EducationEditDialogComponent
         title: this.title.value,
         description: this.description.value,
         thumbnail: this.thumbnail.value,
-        startDate: this.startDate.value,
-        endDate: this.endDate.value
+        dateRange: {
+          startDate: this.startDate.value,
+          endDate: this.endDate.value
+        }
       }).subscribe(() => {});
 
     this.dialogRef.close();

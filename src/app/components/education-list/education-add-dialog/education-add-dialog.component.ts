@@ -101,8 +101,10 @@ export class EducationAddDialogComponent
         title: this.title.value,
         description: this.description.value,
         thumbnail: this.thumbnail.value,
-        startDate: this.startDate.value,
-        endDate: this.endDate.value
+        dateRange: {
+          startDate: this.startDate.value,
+          endDate: this.endDate.value
+        }
       }).subscribe((education) => {});
 
     this.dialogRef.close();

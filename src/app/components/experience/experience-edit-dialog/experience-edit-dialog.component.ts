@@ -50,8 +50,8 @@ export class ExperienceEditDialogComponent
         title: [this.experience.title, Validators.required],
         description: [this.experience.description],
         thumbnail: [this.experience.thumbnail],
-        startDate: [this.experience.startDate, Validators.required],
-        endDate: [this.experience.endDate, Validators.required],
+        startDate: [this.experience.dateRange.startDate, Validators.required],
+        endDate: [this.experience.dateRange.endDate, Validators.required],
         companyName: [this.experience.companyName, Validators.required]
       }
     );
@@ -66,8 +66,11 @@ export class ExperienceEditDialogComponent
           title: this.title.value,
           description: this.description.value,
           thumbnail: this.thumbnail.value,
-          startDate: this.startDate.value,
-          endDate: this.endDate.value,
+          dateRange: 
+          {
+            startDate: this.startDate.value,
+            endDate: this.endDate.value,
+          },
           companyName: this.companyName.value
         })
       .subscribe( () => {});

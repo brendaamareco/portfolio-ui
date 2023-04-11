@@ -33,7 +33,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Fecha de inicio</mat-label>
             <input matInput [matDatepicker]="dStart" [formControl]="startDate">
-            <mat-hint>MM/YYYY</mat-hint>
+            <mat-hint>MM/yyyy</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="dStart"></mat-datepicker-toggle>
             <mat-datepicker #dStart
                             startView="multi-year"
@@ -45,7 +45,7 @@
         <mat-form-field appearance="fill">
             <mat-label>Fecha de finalización</mat-label>
             <input matInput [matDatepicker]="dEnd" [formControl]="endDate">
-            <mat-hint>MM/YYYY</mat-hint>
+            <mat-hint>MM/yyyy</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="dEnd"></mat-datepicker-toggle>
             <mat-datepicker #dEnd
                             startView="multi-year"

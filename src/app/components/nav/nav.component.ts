@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this
-    .ownerService.get()
+    .ownerService.getAll()
     .subscribe( owners => { this.owner = owners[0]; });
   }
 

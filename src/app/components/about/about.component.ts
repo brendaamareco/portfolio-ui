@@ -16,7 +16,7 @@ export class AboutComponent implements OnInit {
   constructor(private ownerService: OwnerService, public dialog: MatDialog){}
 
   ngOnInit(): void {
-    this.ownerService.get().subscribe(
+    this.ownerService.getAll().subscribe(
       owners => { this.owner = owners[0]; }
     )
   }

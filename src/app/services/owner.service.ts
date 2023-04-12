@@ -1,22 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Owner } from '../models/owner.interface';
-import { Observable } from 'rxjs';
+import { AbstractService } from './abstractService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OwnerService {
-
-  constructor(private http: HttpClient) { }
-  
-  get(): Observable<Owner[]>
+export class OwnerService extends AbstractService<Owner>
+{
+  constructor(protected override httpClient: HttpClient) 
   {
-    return this.http.get<Owner[]>("http://localhost:8080/api/owner")
-  }
-
-  update(owner: Owner): Observable<Owner>
-  {
-    return this.http.put<Owner>("http://localhost:8080/api/owner", owner);
+    super(httpClient, "http://localhost:8080/api/owner");
   }
 }

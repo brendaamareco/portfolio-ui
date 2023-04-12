@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit
   loadOwner(): void
   {
     this.ownerService
-      .get()
+      .getAll()
       ?.subscribe((owners) => (this.owner = owners[0]));
   }
 }

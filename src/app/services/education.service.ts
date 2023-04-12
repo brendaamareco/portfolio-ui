@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Education } from '../models/education.interface';
 import { AbstractService } from './abstractService';
 

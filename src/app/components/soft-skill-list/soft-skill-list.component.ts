@@ -18,7 +18,7 @@ export class SoftSkillListComponent {
   loadSkills(): void
   {
     this.softSkillService
-    .getSkills()
+    .getAll()
     .subscribe(skills => this.softSkillList = skills);
   }
 }

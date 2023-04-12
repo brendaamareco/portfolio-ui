@@ -2,18 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SoftSkill } from '../models/softSkill.interface';
+import { AbstractService } from './abstractService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SoftSkillService {
-
-  rootUrl: string = "http://localhost:8080/api/";
-
-  constructor(private httpClient: HttpClient) { }
-
-  getSkills(): Observable<SoftSkill[]>
-  {
-    return this.httpClient.get<SoftSkill[]>(this.rootUrl + "soft-skills");
+export class SoftSkillService extends AbstractService<SoftSkill> 
+{
+  constructor(protected override httpClient: HttpClient) 
+  { 
+    super(httpClient, "http://localhost:8080/api/soft-skills");
   }
 }

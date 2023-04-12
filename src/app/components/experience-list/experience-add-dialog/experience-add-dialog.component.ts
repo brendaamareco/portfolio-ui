@@ -59,7 +59,7 @@ export class ExperienceAddDialogComponent
     submit(): void
     {
       this.experienceService
-      .addExperience(
+      .add(
         {
           title: this.title.value,
           description: this.description.value,

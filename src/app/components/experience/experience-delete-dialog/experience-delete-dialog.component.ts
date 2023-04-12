@@ -20,7 +20,7 @@ export class ExperienceDeleteDialogComponent
   deleteExperience(): void
   {
     this.experienceService
-    .deleteExperience(this.experience?.id)
+    .delete(this.experience?.id)
     .subscribe( () => {} );
 
     this.dialogRef.close();

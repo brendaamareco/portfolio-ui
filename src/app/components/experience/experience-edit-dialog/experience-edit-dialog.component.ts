@@ -60,7 +60,7 @@ export class ExperienceEditDialogComponent
   submit(): void
     {
       this.experienceService
-      .updateExperience(
+      .update(
         {
           id: this.experience.id,
           title: this.title.value,

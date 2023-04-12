@@ -21,7 +21,7 @@ export class ExperienceListComponent
   loadExperienceList(): void
   {
     this.experienceService
-    .getExperienceList()
+    .getAll()
     .subscribe( experienceList => { this.experienceList = experienceList });
   }
 

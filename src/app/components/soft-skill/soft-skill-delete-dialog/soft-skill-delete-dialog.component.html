@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Borrar habilidad blanda</h1>
+<mat-dialog-content>
+    <span>¿Estás seguro de que quiere borrar la habilidad blanda </span>
+    <strong>{{softSkill?.name}}</strong>
+    <span>?</span>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="deleteSoftSkill()">Borrar</button>
+</mat-dialog-actions>

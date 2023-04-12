@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SoftSkill } from 'src/app/models/softSkill.interface';
 import { SoftSkillEditDialogComponent } from './soft-skill-edit-dialog/soft-skill-edit-dialog.component';
+import { SoftSkillDeleteDialogComponent } from './soft-skill-delete-dialog/soft-skill-delete-dialog.component';
 
 @Component({
   selector: 'app-soft-skill',
@@ -17,8 +18,18 @@ export class SoftSkillComponent
 
   openEditDialog(): void
   {
+    this.openDialog(SoftSkillEditDialogComponent);
+  }
+
+  openDeleteDialog(): void
+  {
+    this.openDialog(SoftSkillDeleteDialogComponent);
+  }
+
+  openDialog(component: any): void
+  {
     this.dialog
-    .open(SoftSkillEditDialogComponent, 
+    .open(component, 
       { data: this.softSkill })
       .afterClosed()
       .subscribe(() => {this.softSkillChanged.emit()});

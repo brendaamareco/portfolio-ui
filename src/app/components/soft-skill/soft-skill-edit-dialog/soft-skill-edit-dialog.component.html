@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Agregar habilidad blanda</h1>
-<form [formGroup]="addSoftSkillForm" (submit)="submit()">
+<h1 mat-dialog-title>Editar habilidad blanda</h1>
+<form [formGroup]="editSoftSkillForm" (submit)="submit()">
 
     <mat-dialog-content class="mat-typography row">
         <mat-form-field appearance="fill">
@@ -17,6 +17,6 @@
     
     <mat-dialog-actions align="end">
         <button mat-button mat-dialog-close>Cancelar</button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="addSoftSkillForm.invalid">Agregar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="editSoftSkillForm.invalid">Editar</button>
     </mat-dialog-actions>
 </form>

@@ -57,7 +57,7 @@ export class EducationEditDialogComponent
 
   submit(): void
   {
-    this.educationService.updateEducation(
+    this.educationService.update(
       {
         id: this.education.id,
         institution: this.institution.value,

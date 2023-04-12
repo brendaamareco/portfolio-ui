@@ -2,33 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Education } from '../models/education.interface';
+import { AbstractService } from './abstractService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EducationService 
+export class EducationService extends AbstractService<Education> 
 {
-  rootUrl: string = "http://localhost:8080/api/";
-
-  constructor(private httpClient: HttpClient) { }
-
-  getEducationList(): Observable<Education[]>
-  {
-    return this.httpClient.get<Education[]>(this.rootUrl + "education");
-  }
-
-  addEducation(education: Education): Observable<Education>
-  {
-    return this.httpClient.post<Education>(this.rootUrl + "education", education);
-  }
-
-  updateEducation(education: Education): Observable<Education>
-  {
-    return this.httpClient.put<Education>(this.rootUrl + "education", education);
-  }
-
-  deleteEducation(educationId: number | undefined): Observable<Education>
-  {
-    return this.httpClient.delete<Education>(this.rootUrl + "education/" + educationId);
+  constructor(protected override httpClient: HttpClient) 
+  { 
+    super(httpClient, "http://localhost:8080/api/education");
   }
 }

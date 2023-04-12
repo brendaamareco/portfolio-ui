@@ -21,7 +21,7 @@ export class EducationListComponent
   loadEducationList(): void
   {
     this.educationService
-    .getEducationList()
+    .getAll()
     .subscribe( educationList => this.educationList = educationList);
   }
 

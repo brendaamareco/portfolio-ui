@@ -10,9 +10,9 @@ export class OwnerService {
 
   constructor(private http: HttpClient) { }
   
-  get(): Observable<Owner>
+  get(): Observable<Owner[]>
   {
-    return this.http.get<Owner>("http://localhost:8080/api/owner")
+    return this.http.get<Owner[]>("http://localhost:8080/api/owner")
   }
 
   update(owner: Owner): Observable<Owner>

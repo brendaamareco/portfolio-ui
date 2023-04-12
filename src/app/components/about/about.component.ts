@@ -17,7 +17,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.ownerService.get().subscribe(
-      owner => { this.owner = owner; }
+      owners => { this.owner = owners[0]; }
     )
   }
 

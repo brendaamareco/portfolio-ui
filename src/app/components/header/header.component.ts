@@ -31,6 +31,6 @@ export class HeaderComponent implements OnInit
   {
     this.ownerService
       .get()
-      ?.subscribe((owner) => (this.owner = owner));
+      ?.subscribe((owners) => (this.owner = owners[0]));
   }
 }

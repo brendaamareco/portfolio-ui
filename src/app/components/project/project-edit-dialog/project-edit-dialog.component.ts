@@ -32,7 +32,7 @@ export class ProjectEditDialogComponent {
     
     submitProject()
     {
-      this.projectService.updateProject({
+      this.projectService.update({
         id: this.project.id,
         title: this.title?.value,
         description: this.description?.value,

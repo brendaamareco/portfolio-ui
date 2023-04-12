@@ -25,7 +25,7 @@ export class ProjectListComponent
 
   loadProjects(): void
   {
-    this.projectService.getProjects().subscribe(
+    this.projectService.getAll().subscribe(
       projects => { this.projectList = projects }
     )
   }

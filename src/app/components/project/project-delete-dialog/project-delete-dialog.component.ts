@@ -20,7 +20,7 @@ export class ProjectDeleteDialogComponent
 
   deleteProject(): void
   {
-    this.projectService.deleteProject(this.project.id).subscribe(data => {});
+    this.projectService.delete(this.project.id).subscribe(data => {});
     this.dialog.close();
   }
 }

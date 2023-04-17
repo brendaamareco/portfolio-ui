@@ -35,6 +35,7 @@ import { SoftSkillAddDialogComponent } from '../../components/soft-skill-list/so
 import { SoftSkillEditDialogComponent } from '../../components/soft-skill/soft-skill-edit-dialog/soft-skill-edit-dialog.component';
 import { SoftSkillDeleteDialogComponent } from '../../components/soft-skill/soft-skill-delete-dialog/soft-skill-delete-dialog.component';
 import { HardSkillAddDialogComponent } from '../../components/hard-skill-list/hard-skill-add-dialog/hard-skill-add-dialog.component';
+import { HardSkillEditDialogComponent } from '../../components/hard-skill/hard-skill-edit-dialog/hard-skill-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { HardSkillAddDialogComponent } from '../../components/hard-skill-list/ha
     SoftSkillAddDialogComponent,
     SoftSkillEditDialogComponent,
     SoftSkillDeleteDialogComponent,
-    HardSkillAddDialogComponent
+    HardSkillAddDialogComponent,
+    HardSkillEditDialogComponent
   ],
   imports: [
     CommonModule,

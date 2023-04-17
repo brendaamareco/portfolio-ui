@@ -1,6 +1,6 @@
 <mat-card class="skill mb-2">
     <mat-card-header>
-        <mat-card-title class="fs-6">Nombre habilidad</mat-card-title>
+        <mat-card-title class="fs-6">{{ hardSkill?.name }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-actions class="position-absolute top-0 end-0">
@@ -13,7 +13,7 @@
     </mat-card-actions>
 
     <mat-card-content class="col-8 col-lg-10 pb-4">
-        <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" [value]="hardSkill?.level"></mat-progress-bar>
     </mat-card-content>
 
 </mat-card>

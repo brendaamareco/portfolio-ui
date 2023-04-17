@@ -8,8 +8,7 @@
             <mat-icon>add</mat-icon>
         </button>
     </mat-card-header>
-    <mat-card-content class="pb-4 pt-2 text-start">
-        <app-hard-skill></app-hard-skill>
-        <app-hard-skill></app-hard-skill>
+    <mat-card-content class="pb-4 pt-2 text-start" *ngFor="let skill of hardSkills">
+        <app-hard-skill [hardSkill]="skill" (hardSkillChanged)="loadHardSkills()" ></app-hard-skill>
     </mat-card-content>
 </mat-card>

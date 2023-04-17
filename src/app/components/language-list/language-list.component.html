@@ -8,8 +8,7 @@
             <mat-icon>add</mat-icon>
         </button>
     </mat-card-header>
-    <mat-card-content class="pb-4 pt-2 text-start">
-        <app-language></app-language>
-        <app-language></app-language>
+    <mat-card-content class="pb-4 pt-2 text-start" *ngFor="let language of languageList">
+        <app-language [language]="language" (languageChanged)="loadLanguageList()"></app-language>
     </mat-card-content>
 </mat-card>

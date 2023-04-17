@@ -9,14 +9,14 @@
     </mat-card-actions>
 
     <mat-card-header class="pt-0">
-        <mat-card-title class="fs-6">Idioma nombre</mat-card-title>
+        <mat-card-title class="fs-6">{{ language.name }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content class="pb-4 col-8 col-lg-10">
         <p>Nivel: 
-            <span>B2</span>
+            <span>{{ language.level }}</span>
         </p>
-        <mat-progress-bar value="50"></mat-progress-bar>
+        <mat-progress-bar [value]="getLevelValue()"></mat-progress-bar>
     </mat-card-content>
 
 </mat-card>

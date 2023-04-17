@@ -38,6 +38,7 @@ import { HardSkillAddDialogComponent } from '../../components/hard-skill-list/ha
 import { HardSkillEditDialogComponent } from '../../components/hard-skill/hard-skill-edit-dialog/hard-skill-edit-dialog.component';
 import { HardSkillDeleteDialogComponent } from '../../components/hard-skill/hard-skill-delete-dialog/hard-skill-delete-dialog.component';
 import { LanguageAddDialogComponent } from '../../components/language-list/language-add-dialog/language-add-dialog.component';
+import { LanguageEditDialogComponent } from '../../components/language/language-edit-dialog/language-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { LanguageAddDialogComponent } from '../../components/language-list/langu
     HardSkillAddDialogComponent,
     HardSkillEditDialogComponent,
     HardSkillDeleteDialogComponent,
-    LanguageAddDialogComponent
+    LanguageAddDialogComponent,
+    LanguageEditDialogComponent
   ],
   imports: [
     CommonModule,

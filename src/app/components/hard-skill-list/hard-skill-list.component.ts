@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { HardSkill } from 'src/app/models/hardSkill.interface';
 import { HardSkillService } from 'src/app/services/hard-skill.service';
+import { HardSkillAddDialogComponent } from './hard-skill-add-dialog/hard-skill-add-dialog.component';
 
 @Component({
   selector: 'app-hard-skill-list',
@@ -11,7 +13,7 @@ export class HardSkillListComponent
 {
   hardSkills: HardSkill[] = [];
 
-  constructor(private hardSkillService: HardSkillService) 
+  constructor(private hardSkillService: HardSkillService, private dialog: MatDialog) 
   {
     this.loadHardSkills();
   }
@@ -21,5 +23,13 @@ export class HardSkillListComponent
     this.hardSkillService
     .getAll()
     .subscribe( (hardSkills) => this.hardSkills = hardSkills )
+  }
+
+  openAddDialog(): void
+  {
+    this.dialog
+    .open(HardSkillAddDialogComponent)
+    .afterClosed()
+    .subscribe( () => this.loadHardSkills());
   }
 }

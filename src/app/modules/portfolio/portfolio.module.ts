@@ -34,6 +34,7 @@ import { ExperienceDeleteDialogComponent } from 'src/app/components/experience/e
 import { SoftSkillAddDialogComponent } from '../../components/soft-skill-list/soft-skill-add-dialog/soft-skill-add-dialog.component';
 import { SoftSkillEditDialogComponent } from '../../components/soft-skill/soft-skill-edit-dialog/soft-skill-edit-dialog.component';
 import { SoftSkillDeleteDialogComponent } from '../../components/soft-skill/soft-skill-delete-dialog/soft-skill-delete-dialog.component';
+import { HardSkillAddDialogComponent } from '../../components/hard-skill-list/hard-skill-add-dialog/hard-skill-add-dialog.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { SoftSkillDeleteDialogComponent } from '../../components/soft-skill/soft
     ExperienceDeleteDialogComponent,
     SoftSkillAddDialogComponent,
     SoftSkillEditDialogComponent,
-    SoftSkillDeleteDialogComponent
+    SoftSkillDeleteDialogComponent,
+    HardSkillAddDialogComponent
   ],
   imports: [
     CommonModule,

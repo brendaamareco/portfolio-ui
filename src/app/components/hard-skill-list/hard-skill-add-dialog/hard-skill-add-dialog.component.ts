@@ -36,6 +36,8 @@ export class HardSkillAddDialogComponent
     this.hardSkillService.add({
       name: this.name.value,
       level: this.level.value
-    }).subscribe( () => this.dialogRef.close )
+    }).subscribe( () => {} )
+
+    this.dialogRef.close();
   }
 }

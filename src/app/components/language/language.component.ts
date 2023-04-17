@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Language, LanguageLevel } from 'src/app/models/language.interface';
 import { LanguageEditDialogComponent } from './language-edit-dialog/language-edit-dialog.component';
+import { LanguageDeleteDialogComponent } from './language-delete-dialog/language-delete-dialog.component';
 
 @Component({
   selector: 'app-language',
@@ -23,8 +24,18 @@ export class LanguageComponent
 
   openEditDialog(): void 
   {
+    this.openDialog(LanguageEditDialogComponent);
+  }
+
+  openDeleteDialog(): void 
+  {
+    this.openDialog(LanguageDeleteDialogComponent);
+  }
+
+  openDialog(component: any): void 
+  {
     this.dialog
-    .open(LanguageEditDialogComponent, { data: this.language })
+    .open(component, { data: this.language })
     .afterClosed()
     .subscribe( () => this.languageChanged.emit() );
   }

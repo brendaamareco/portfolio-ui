@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Borrar Idioma</h1>
+<mat-dialog-content>
+    <span>¿Estás seguro de que quiere borrar el idioma </span>
+    <strong>{{languageName}}</strong>
+    <span>?</span>  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancelar</button>
+    <button mat-raised-button color="primary" (click)="deleteLanguage()">Borrar</button>
+</mat-dialog-actions>

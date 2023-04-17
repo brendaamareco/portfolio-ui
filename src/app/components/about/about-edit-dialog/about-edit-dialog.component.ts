@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Owner } from 'src/app/models/owner.interface';
 import { OwnerService } from 'src/app/services/owner.service';
@@ -18,9 +18,9 @@ export class AboutEditDialogComponent
     {
       this.aboutForm = this.formBuilder.group(
       {
-        description: [owner.description],
-        country: [owner.country, Validators.required],
-        province: [owner.province, Validators.required]
+        description: [owner.description, Validators.maxLength(1024)],
+        country: [owner.country, Validators.compose([Validators.required, Validators.maxLength(45)])],
+        province: [owner.province, Validators.compose([Validators.required, Validators.maxLength(45)])]
       });
     }
 
@@ -36,11 +36,16 @@ export class AboutEditDialogComponent
   
     get country()
     {
-      return this.aboutForm.get('country');
+      return this.aboutForm.get('country') as FormControl;
     }
 
     get province()
     {
-      return this.aboutForm.get('province');
+      return this.aboutForm.get('province') as FormControl;
+    }
+
+    get description()
+    {
+      return this.aboutForm.get('description') as FormControl;
     }
 }

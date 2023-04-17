@@ -1,25 +1,38 @@
 <h1 mat-dialog-title>Editar Acerca de</h1>
 <form [formGroup]="aboutForm" (submit)="submitAbout()">
     <mat-dialog-content class="mat-typography row">
+
         <mat-form-field appearance="fill">
             <mat-label>País</mat-label>
             <input matInput formControlName="country" type="text">
         </mat-form-field>
-        <mat-error *ngIf="country?.invalid && country?.touched">
+        <mat-error *ngIf="country?.errors?.['required'] && country?.touched">
             <small>Debe ingresar un país</small>
         </mat-error>
+        <mat-error *ngIf="country?.errors?.['maxlength']">
+            <small>El nombre del país es demasiado largo</small>
+        </mat-error>
+
         <mat-form-field appearance="fill">
             <mat-label>Provincia</mat-label>
             <input matInput formControlName="province" type="text">
         </mat-form-field>
-        <mat-error *ngIf="province?.invalid && province?.touched">
+        <mat-error *ngIf="province?.errors?.['required'] && province?.touched">
             <small>Debe ingresar una provincia</small>
         </mat-error>
+        <mat-error *ngIf="province?.errors?.['maxlength']">
+            <small>El nombre de la provincia es demasiado largo</small>
+        </mat-error>
+
         <mat-form-field appearance="fill">
             <mat-label>Descripción</mat-label>
             <textarea matInput formControlName="description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
         </mat-form-field>
+        <mat-error *ngIf="description?.errors?.['maxlength']">
+            <small>La descripción es demasiada larga</small>
+        </mat-error>
+
     </mat-dialog-content>
 
     <mat-dialog-actions align="end">

@@ -18,7 +18,7 @@ export class SoftSkillEditDialogComponent
   {
     this.editSoftSkillForm = this.formBuilder.group(
       {
-        name: ['', Validators.compose( [Validators.required, Validators.maxLength(45)] )]
+        name: [this.softSkill.name, Validators.compose( [Validators.required, Validators.maxLength(45)] )]
       });
   }
 

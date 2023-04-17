@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -28,7 +29,8 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MomentDateModule
+    MomentDateModule,
+    MatSelectModule
   ]
 })
 export class MaterialModule { }

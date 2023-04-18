@@ -1,5 +1,5 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Education } from 'src/app/models/education.interface';
 import { EducationService } from 'src/app/services/education.service';
@@ -9,6 +9,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 
 import * as _moment from 'moment';
 import {default as _rollupMoment, Moment} from 'moment';
+import { startDateBeforeEndDateValidator } from 'src/app/validators/dateRange';
 
 const moment = _rollupMoment || _moment;
 
@@ -46,13 +47,14 @@ export class EducationEditDialogComponent
   {
     this.educationEditForm = this.formBuilder.group(
       {
-        institution: [this.education.institution, Validators.required],
-        title: [this.education.title, Validators.required],
-        description: [this.education.description],
-        thumbnail: [this.education.thumbnail],
+        institution: [this.education.institution, Validators.compose([Validators.required, Validators.maxLength(120)])],
+        title: [this.education.title, Validators.compose([Validators.required, Validators.maxLength(120)])],
+        description: [this.education.description, Validators.maxLength(1024)],
+        thumbnail: [this.education.thumbnail, Validators.maxLength(2048)],
         startDate: [this.education.dateRange?.startDate, Validators.required],
         endDate: [this.education.dateRange?.endDate, Validators.required]
-      });
+      },{ validator: startDateBeforeEndDateValidator() }
+      );
   }
 
   submit(): void
@@ -75,9 +77,10 @@ export class EducationEditDialogComponent
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
   {
-    const ctrlValue = formControl.value;
+    const ctrlValue = moment(formControl.value, 'YYYY-MM-DD');
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
+
     formControl.setValue(ctrlValue);
     datepicker.close();
   }

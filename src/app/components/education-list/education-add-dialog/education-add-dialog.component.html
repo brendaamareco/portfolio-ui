@@ -9,6 +9,9 @@
         <mat-error *ngIf="institution?.errors?.['required'] && institution?.touched">
             <small>Debe ingresar una institución</small>
         </mat-error>
+        <mat-error *ngIf="institution?.errors?.['maxlength']">
+            <small>El nombre de la instituciíon es demasiado largo</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>Título</mat-label>
@@ -17,17 +20,26 @@
         <mat-error *ngIf="title?.errors?.['required'] && title?.touched">
             <small>Debe ingresar un título</small>
         </mat-error>
+        <mat-error *ngIf="title?.errors?.['maxlength']">
+            <small>El título es demasiado largo</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>Descripción</mat-label>
             <textarea matInput [formControl]="description" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
             cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
         </mat-form-field>
+        <mat-error *ngIf="description?.errors?.['maxlength']">
+            <small>La descripción es demasiada larga</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>URL Imagen</mat-label>
             <input matInput [formControl]="thumbnail" type="text">
         </mat-form-field>
+        <mat-error *ngIf="thumbnail?.errors?.['maxlength']">
+            <small>La URL de la imagen es demasiada larga</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>Fecha de inicio</mat-label>
@@ -52,6 +64,7 @@
                             panelClass="example-month-picker">
             </mat-datepicker>
         </mat-form-field>
+        <mat-error *ngIf="educationAddForm.hasError('startDateBeforeEndDate')">La fecha de inicio no puede ser mayor a la fecha de fin</mat-error>
 
     </mat-dialog-content>
 

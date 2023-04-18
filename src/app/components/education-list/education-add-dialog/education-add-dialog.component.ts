@@ -8,6 +8,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 
 import * as _moment from 'moment';
 import {default as _rollupMoment, Moment} from 'moment';
+import { startDateBeforeEndDateValidator } from 'src/app/validators/dateRange';
 
 const moment = _rollupMoment || _moment;
 
@@ -45,13 +46,13 @@ export class EducationAddDialogComponent
   {
     this.educationAddForm = formBuilder.group(
       {
-        institution: ['', Validators.required],
-        title: ['', Validators.required],
-        description: [''],
-        thumbnail: [''],
+        institution: ['', Validators.compose([Validators.required, Validators.maxLength(120)])],
+        title: ['', Validators.compose([Validators.required, Validators.maxLength(120)])],
+        description: ['', Validators.maxLength(1024)],
+        thumbnail: ['', Validators.maxLength(2048)],
         startDate: [moment(), Validators.required],
         endDate: [moment(), Validators.required]
-      });
+      }, { validator: startDateBeforeEndDateValidator() });
   }
 
   get institution()
@@ -86,9 +87,10 @@ export class EducationAddDialogComponent
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
   {
-    const ctrlValue = formControl.value;
+    const ctrlValue = moment(formControl.value, 'YYYY-MM-DD');
     ctrlValue.month(normalizedMonthAndYear.month());
     ctrlValue.year(normalizedMonthAndYear.year());
+
     formControl.setValue(ctrlValue);
     datepicker.close();
   }

@@ -1,6 +1,5 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
@@ -58,41 +57,36 @@ export class ExperienceEditDialogComponent
   constructor(
     public dialogRef: MatDialogRef<ExperienceEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private experience: Experience,
-    private experienceService: ExperienceService,
-    private formBuilder: FormBuilder
+    private experienceService: ExperienceService
   ) {
-    this.editExperienceForm = formBuilder.group(
+    this.editExperienceForm = new FormGroup(
       {
-        title: [
-          this.experience.title,
-          Validators.compose([Validators.required, Validators.maxLength(64)]),
-        ],
-        description: [this.experience.description, Validators.maxLength(1024)],
-        thumbnail: [this.experience.thumbnail, Validators.maxLength(2048)],
-        startDate: [this.experience.dateRange.startDate, Validators.required],
-        endDate: [this.experience.dateRange.endDate, Validators.required],
-        companyName: [
-          this.experience.companyName,
-          Validators.compose([Validators.required, Validators.maxLength(64)]),
-        ],
-      },
-      { validator: startDateBeforeEndDateValidator() }
-    );
+        title: new FormControl(this.experience.title, [Validators.required, Validators.maxLength(64)]),
+        description: new FormControl(this.experience.description, Validators.maxLength(1024)),
+        thumbnail: new FormControl(this.experience.thumbnail, Validators.maxLength(2048)),
+        startDate: new FormControl(this.experience.dateRange.startDate, Validators.required),
+        endDate: new FormControl(this.experience.dateRange.endDate, Validators.required),
+        companyName: new FormControl(this.experience.companyName, [Validators.required, Validators.maxLength(64)])
+      }, startDateBeforeEndDateValidator());
   }
 
-  submit(): void {
+  submit(): void 
+  {
+    const experienceToUpdate = 
+    {
+      id: this.experience.id,
+      title: this.title.value,
+      description: this.description.value,
+      thumbnail: this.thumbnail.value,
+      dateRange: {
+        startDate: this.startDate.value,
+        endDate: this.endDate.value,
+      },
+      companyName: this.companyName.value
+    };
+
     this.experienceService
-      .update({
-        id: this.experience.id,
-        title: this.title.value,
-        description: this.description.value,
-        thumbnail: this.thumbnail.value,
-        dateRange: {
-          startDate: this.startDate.value,
-          endDate: this.endDate.value,
-        },
-        companyName: this.companyName.value,
-      })
+      .update(experienceToUpdate)
       .subscribe(() => {});
 
     this.dialogRef.close();

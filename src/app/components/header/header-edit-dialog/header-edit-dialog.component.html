@@ -4,23 +4,33 @@
 
     <mat-form-field appearance="fill">
       <mat-label>URL Imagen</mat-label>
-      <img matPrefix [src]="owner.thumbnail" width="40px" class="pe-1 ps-2" />
-      <input matInput formControlName="thumbnail">
+      <img matPrefix [src]="thumbnail.value" width="40px" class="pe-1 ps-2" />
+      <input matInput [formControl]="thumbnail">
     </mat-form-field>
+    <mat-error *ngIf="thumbnail?.errors?.['maxlength']">
+      <small>La URL de la imagen es demasiada larga</small>
+    </mat-error>
 
     <mat-form-field appearance="fill">
       <mat-label>Mensaje de bienvenida</mat-label>
-      <textarea matInput formControlName="welcomeText" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+      <textarea matInput [formControl]="welcomeText" cdkTextareaAutosize #autosize="cdkTextareaAutosize"
         cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
     </mat-form-field>
+    <mat-error *ngIf="welcomeText?.errors?.['maxlength']">
+      <small>El mensaje de bienvenida es demasiado largo</small>
+    </mat-error>
 
     <mat-form-field appearance="fill">
       <mat-label>Rol</mat-label>
-      <input matInput formControlName="role">
+      <input matInput [formControl]="role">
     </mat-form-field>
     <mat-error *ngIf="role?.errors?.['required'] && role?.touched">
       <small>Debe ingresar un rol</small>
     </mat-error>
+    <mat-error *ngIf="role?.errors?.['maxlength']">
+      <small>El nombre del rol es demasiado largo</small>
+    </mat-error>
+
   </div>
 
   <mat-dialog-actions align="end">

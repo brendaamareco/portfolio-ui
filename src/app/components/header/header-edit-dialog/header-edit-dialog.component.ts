@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Owner } from 'src/app/models/owner.interface';
 import { OwnerService } from 'src/app/services/owner.service';
@@ -18,25 +18,37 @@ export class HeaderEditDialogComponent
   {
     this.ownerForm = this.formBuilder.group(
       {
-        thumbnail: [owner.thumbnail],
-        welcomeText: [owner.welcomeText],
-        role: [owner.role, Validators.required]
+        thumbnail: [owner.thumbnail, Validators.maxLength(2048)],
+        welcomeText: [owner.welcomeText, Validators.maxLength(1024)],
+        role: [owner.role, Validators.compose([Validators.required, Validators.maxLength(45)])]
       }
     )
   }
 
-  submit(): void
+  get thumbnail(): FormControl
   {
-    this.owner.thumbnail = this.ownerForm.get("thumbnail")?.value;
-    this.owner.welcomeText = this.ownerForm.get("welcomeText")?.value;
-    this.owner.role = this.ownerForm.get("role")?.value;
-
-    this.ownerService.update(this.owner).subscribe( response => {});
-    this.dialogRef.close();
+    return this.ownerForm.get("thumbnail") as FormControl;
   }
 
-  get role()
+  get welcomeText(): FormControl
   {
-    return this.ownerForm.get("role");
+    return this.ownerForm.get("welcomeText") as FormControl;
+  }
+
+  get role(): FormControl
+  {
+    return this.ownerForm.get("role") as FormControl;
+  }
+
+  submit(): void
+  {
+    this.owner.thumbnail = this.thumbnail?.value;
+    this.owner.welcomeText = this.welcomeText?.value;
+    this.owner.role = this.role?.value;
+
+    this.ownerService
+    .update(this.owner)
+    .subscribe( response => {});
+    this.dialogRef.close();
   }
 }

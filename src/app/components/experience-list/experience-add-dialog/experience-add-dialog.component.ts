@@ -8,6 +8,7 @@ import {MatDatepicker} from '@angular/material/datepicker';
 
 import * as _moment from 'moment';
 import {default as _rollupMoment, Moment} from 'moment';
+import { startDateBeforeEndDateValidator } from 'src/app/validators/dateRange';
 
 const moment = _rollupMoment || _moment;
 
@@ -47,13 +48,14 @@ export class ExperienceAddDialogComponent
     {
       this.addExperienceForm = formBuilder.group(
         {
-          title: ['', Validators.required],
-          description: [''],
-          thumbnail: [''],
+          title: ['', Validators.compose([Validators.required, Validators.maxLength(64)])],
+          description: ['', Validators.maxLength(1024)],
+          thumbnail: ['', Validators.maxLength(2048)],
           startDate: [moment(), Validators.required],
           endDate: [moment(), Validators.required],
-          companyName: ['', Validators.required],
-        });
+          companyName: ['', Validators.compose([Validators.required, Validators.maxLength(64)])],
+        }, { validator: startDateBeforeEndDateValidator() }
+        );
     }
 
     submit(): void
@@ -78,9 +80,10 @@ export class ExperienceAddDialogComponent
 
     setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
     {
-      const ctrlValue = formControl.value;
+      const ctrlValue = moment(formControl.value, 'YYYY-MM-DD');
       ctrlValue.month(normalizedMonthAndYear.month());
       ctrlValue.year(normalizedMonthAndYear.year());
+
       formControl.setValue(ctrlValue);
       datepicker.close();
     }

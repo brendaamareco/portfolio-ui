@@ -4,7 +4,7 @@
 
         <mat-form-field>
             <mat-label>Título</mat-label>
-            <input matInput type="text" formControlName="title"/>
+            <input matInput type="text" [formControl]="title"/>
         </mat-form-field>
         <mat-error *ngIf="title?.errors?.['required'] && title?.touched">
             <small>Debe ingresar un título</small>
@@ -15,18 +15,27 @@
 
         <mat-form-field appearance="fill">
             <mat-label>Descripción</mat-label>
-            <input matInput formControlName="description" type="text"/>
+            <input matInput [formControl]="description" type="text"/>
         </mat-form-field>
+        <mat-error *ngIf="description?.errors?.['maxlength']">
+            <small>La descripción es demasiada larga</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>URL Imagen</mat-label>
-            <input matInput formControlName="thumbnail" type="text"/>
+            <input matInput [formControl]="thumbnail" type="text"/>
         </mat-form-field>
+        <mat-error *ngIf="thumbnail?.errors?.['maxlength']">
+            <small>La URL de la imagen es demasiada larga</small>
+        </mat-error>
 
         <mat-form-field appearance="fill">
             <mat-label>URL Proyecto</mat-label>
-            <input matInput formControlName="projectUrl" type="text"/>
+            <input matInput [formControl]="projectUrl" type="text"/>
         </mat-form-field>
+        <mat-error *ngIf="projectUrl?.errors?.['maxlength']">
+            <small>La URL del proyecto es demasiada larga</small>
+        </mat-error>
 
     </mat-dialog-content>
     <mat-dialog-actions align="end">

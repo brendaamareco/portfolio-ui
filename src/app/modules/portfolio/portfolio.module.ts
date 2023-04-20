@@ -40,6 +40,7 @@ import { HardSkillDeleteDialogComponent } from '../../components/hard-skill/hard
 import { LanguageAddDialogComponent } from '../../components/language-list/language-add-dialog/language-add-dialog.component';
 import { LanguageEditDialogComponent } from '../../components/language/language-edit-dialog/language-edit-dialog.component';
 import { LanguageDeleteDialogComponent } from '../../components/language/language-delete-dialog/language-delete-dialog.component';
+import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { LanguageDeleteDialogComponent } from '../../components/language/languag
     HardSkillDeleteDialogComponent,
     LanguageAddDialogComponent,
     LanguageEditDialogComponent,
-    LanguageDeleteDialogComponent
+    LanguageDeleteDialogComponent,
+    LoginPageComponent
   ],
   imports: [
     CommonModule,

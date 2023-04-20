@@ -14,9 +14,7 @@ export class ExperienceListComponent
   experienceList: Experience[] = [];
 
   constructor(private experienceService: ExperienceService, public dialog: MatDialog) 
-  {
-    this.loadExperienceList();
-  }
+  { this.loadExperienceList(); }
 
   loadExperienceList(): void
   {

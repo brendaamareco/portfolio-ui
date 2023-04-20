@@ -17,14 +17,10 @@ export class ExperienceComponent
   constructor(public dialog: MatDialog) {}
 
   openEditDialog(): void
-  {
-    this.openDialog(ExperienceEditDialogComponent);
-  }
+  { this.openDialog(ExperienceEditDialogComponent); }
 
   openDeleteDialog(): void
-  {
-    this.openDialog(ExperienceDeleteDialogComponent);
-  }
+  { this.openDialog(ExperienceDeleteDialogComponent); }
 
   openDialog(component: any): void
   {

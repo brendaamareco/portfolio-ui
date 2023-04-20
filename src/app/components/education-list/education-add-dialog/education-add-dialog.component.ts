@@ -44,15 +44,15 @@ export class EducationAddDialogComponent
 
   constructor(public dialogRef: MatDialogRef<EducationAddDialogComponent>, private formBuilder: FormBuilder, private educationService: EducationService) 
   {
-    this.educationAddForm = formBuilder.group(
+    this.educationAddForm = new FormGroup(
       {
-        institution: ['', Validators.compose([Validators.required, Validators.maxLength(120)])],
-        title: ['', Validators.compose([Validators.required, Validators.maxLength(120)])],
-        description: ['', Validators.maxLength(1024)],
-        thumbnail: ['', Validators.maxLength(2048)],
-        startDate: [moment(), Validators.required],
-        endDate: [moment(), Validators.required]
-      }, { validator: startDateBeforeEndDateValidator() });
+        institution: new FormControl('', [Validators.required, Validators.maxLength(120)]),
+        title: new FormControl('', [Validators.required, Validators.maxLength(120)]),
+        description: new FormControl('', Validators.maxLength(1024)),
+        thumbnail: new FormControl('', Validators.maxLength(2048)),
+        startDate: new FormControl(moment(), Validators.required),
+        endDate: new FormControl(moment(), Validators.required)
+      }, startDateBeforeEndDateValidator());
   }
 
   get institution()

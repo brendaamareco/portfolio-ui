@@ -13,9 +13,7 @@ export class HardSkillDeleteDialogComponent
   hardSkillName: string = "";
 
   constructor(private dialogRef: MatDialogRef<HardSkillDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private hardSkill: HardSkill, private hardSkillService: HardSkillService)
-  {
-    this.hardSkillName = hardSkill.name;
-  }
+  { this.hardSkillName = hardSkill.name; }
 
   deleteHardSkill(): void
   {

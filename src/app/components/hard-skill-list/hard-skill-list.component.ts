@@ -14,9 +14,7 @@ export class HardSkillListComponent
   hardSkills: HardSkill[] = [];
 
   constructor(private hardSkillService: HardSkillService, private dialog: MatDialog) 
-  {
-    this.loadHardSkills();
-  }
+  { this.loadHardSkills(); }
 
   loadHardSkills(): void
   {

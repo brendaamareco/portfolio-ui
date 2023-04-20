@@ -1,5 +1,5 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Education } from 'src/app/models/education.interface';
 import { EducationService } from 'src/app/services/education.service';
@@ -43,34 +43,34 @@ export class EducationEditDialogComponent
 {
   educationEditForm: FormGroup = new FormGroup({});
   
-  constructor(public dialogRef: MatDialogRef<EducationEditDialogComponent>,  @Inject(MAT_DIALOG_DATA) private education: Education, private educationService: EducationService, private formBuilder: FormBuilder)
+  constructor(public dialogRef: MatDialogRef<EducationEditDialogComponent>,  @Inject(MAT_DIALOG_DATA) private education: Education, private educationService: EducationService)
   {
-    this.educationEditForm = this.formBuilder.group(
+    this.educationEditForm = new FormGroup(
       {
-        institution: [this.education.institution, Validators.compose([Validators.required, Validators.maxLength(120)])],
-        title: [this.education.title, Validators.compose([Validators.required, Validators.maxLength(120)])],
-        description: [this.education.description, Validators.maxLength(1024)],
-        thumbnail: [this.education.thumbnail, Validators.maxLength(2048)],
-        startDate: [this.education.dateRange?.startDate, Validators.required],
-        endDate: [this.education.dateRange?.endDate, Validators.required]
-      },{ validator: startDateBeforeEndDateValidator() }
-      );
+        institution: new FormControl(this.education.institution, [Validators.required, Validators.maxLength(120)]),
+        title: new FormControl(this.education.title, [Validators.required, Validators.maxLength(120)]),
+        description: new FormControl(this.education.description, [Validators.maxLength(1024)]),
+        thumbnail: new FormControl(this.education.thumbnail, [Validators.maxLength(2048)]),
+        startDate: new FormControl(this.education.dateRange?.startDate,[ Validators.required]),
+        endDate: new FormControl(this.education.dateRange?.endDate, [Validators.required])
+      }, startDateBeforeEndDateValidator() );
   }
 
   submit(): void
   {
-    this.educationService.update(
-      {
-        id: this.education.id,
-        institution: this.institution.value,
-        title: this.title.value,
-        description: this.description.value,
-        thumbnail: this.thumbnail.value,
-        dateRange: {
-          startDate: this.startDate.value,
-          endDate: this.endDate.value
-        }
-      }).subscribe(() => {});
+    const educationToUpdate =
+    {
+      id: this.education.id,
+      institution: this.institution.value,
+      title: this.title.value,
+      description: this.description.value,
+      thumbnail: this.thumbnail.value,
+      dateRange: { startDate: this.startDate.value, endDate: this.endDate.value }
+    };
+    
+    this.educationService
+    .update(educationToUpdate)
+    .subscribe(() => {});
 
     this.dialogRef.close();
   }

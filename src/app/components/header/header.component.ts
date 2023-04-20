@@ -15,16 +15,11 @@ export class HeaderComponent implements OnInit
 
   constructor(private ownerService: OwnerService, public dialog: MatDialog) {}
 
-  ngOnInit(): void 
-  {
-    this.loadOwner();
-  }
+  ngOnInit(): void { this.loadOwner(); }
 
   openEditDialog(): void 
   {
-    this.dialog.open(HeaderEditDialogComponent, {
-      data: this.owner,
-    });
+    this.dialog.open(HeaderEditDialogComponent, { data: this.owner, });
   }
 
   loadOwner(): void

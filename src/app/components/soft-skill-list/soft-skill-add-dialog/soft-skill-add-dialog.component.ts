@@ -12,19 +12,16 @@ export class SoftSkillAddDialogComponent
 {
   addSoftSkillForm: FormGroup = new FormGroup({});
 
-  constructor(public dialogRef: MatDialogRef<SoftSkillAddDialogComponent>, private formBuilder: FormBuilder, private softSkillService: SoftSkillService)
+  constructor(public dialogRef: MatDialogRef<SoftSkillAddDialogComponent>, private softSkillService: SoftSkillService)
   {
-    this.addSoftSkillForm = this.formBuilder.group(
+    this.addSoftSkillForm = new FormGroup(
       {
-        name: 
-        ['', Validators.compose( [Validators.required, Validators.maxLength(45)] )]
+        name: new FormControl('', [Validators.required, Validators.maxLength(45)]) 
       });
   }
 
   get name(): FormControl
-  {
-    return this.addSoftSkillForm.get('name') as FormControl;
-  }
+  { return this.addSoftSkillForm.get('name') as FormControl; }
 
   submit(): void
   {

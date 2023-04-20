@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SoftSkill } from 'src/app/models/softSkill.interface';
 import { SoftSkillService } from 'src/app/services/soft-skill.service';
@@ -14,18 +14,16 @@ export class SoftSkillEditDialogComponent
   editSoftSkillForm: FormGroup = new FormGroup({});
 
   constructor(public dialogRef: MatDialogRef<SoftSkillEditDialogComponent>, @Inject(MAT_DIALOG_DATA) private softSkill: SoftSkill,
-    private formBuilder: FormBuilder, private softSkillService: SoftSkillService)
+    private softSkillService: SoftSkillService)
   {
-    this.editSoftSkillForm = this.formBuilder.group(
+    this.editSoftSkillForm = new FormGroup(
       {
-        name: [this.softSkill.name, Validators.compose( [Validators.required, Validators.maxLength(45)] )]
+        name: new FormControl(this.softSkill.name, [Validators.required, Validators.maxLength(45)])
       });
   }
 
   get name(): FormControl
-  {
-    return this.editSoftSkillForm.get('name') as FormControl;
-  }
+  { return this.editSoftSkillForm.get('name') as FormControl; }
 
   submit(): void
   {

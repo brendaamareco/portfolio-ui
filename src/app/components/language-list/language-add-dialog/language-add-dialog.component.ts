@@ -25,14 +25,10 @@ export class LanguageAddDialogComponent
   }
 
   get name(): FormControl
-  {
-    return this.addLanguageForm.get('name') as FormControl;
-  }
+  { return this.addLanguageForm.get('name') as FormControl; }
 
   get level(): FormControl
-  {
-    return this.addLanguageForm.get('level') as FormControl;
-  }
+  { return this.addLanguageForm.get('level') as FormControl; }
 
   submit(): void
   {

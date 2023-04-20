@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Owner } from 'src/app/models/owner.interface';
 import { OwnerService } from 'src/app/services/owner.service';
@@ -14,24 +14,33 @@ export class AboutEditDialogComponent
   aboutForm: FormGroup = new FormGroup({});
 
   constructor(public dialogRef: MatDialogRef<AboutEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public owner: Owner, private formBuilder: FormBuilder, private ownerService: OwnerService) 
+    @Inject(MAT_DIALOG_DATA) public owner: Owner, private ownerService: OwnerService) 
     {
-      this.aboutForm = this.formBuilder.group(
+      this.aboutForm = new FormGroup(
       {
-        description: [owner.description, Validators.maxLength(1024)],
-        country: [owner.country, Validators.compose([Validators.required, Validators.maxLength(45)])],
-        province: [owner.province, Validators.compose([Validators.required, Validators.maxLength(45)])]
+        description: new FormControl(owner.description, [Validators.maxLength(1024)]),
+        country: new FormControl(owner.country, [Validators.required, Validators.maxLength(45)]),
+        province: new FormControl(owner.province, [Validators.required, Validators.maxLength(45)])
       });
     }
 
     submitAbout() 
     {
-      this.owner.description = this.description?.value;
-      this.owner.country = this.country?.value;
-      this.owner.province = this.province?.value;
+      const ownerToUpdate =
+      {
+        id: this.owner.id,
+        name: this.owner.name,
+        lastName: this.owner.lastName,
+        thumbnail: this.owner.thumbnail,
+        role: this.owner.role,
+        welcomeText: this.owner.welcomeText,
+        country: this.country?.value,
+        province: this.province?.value,
+        description: this.description?.value,
+      }
 
       this.ownerService
-      .update(this.owner)
+      .update(ownerToUpdate)
       .subscribe(() => {});
 
       this.dialogRef.close();

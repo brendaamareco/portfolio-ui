@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HardSkillService } from 'src/app/services/hard-skill.service';
 
@@ -12,31 +12,31 @@ export class HardSkillAddDialogComponent
 {
   addHardSkillForm: FormGroup = new FormGroup({});
 
-  constructor(private dialogRef: MatDialogRef<HardSkillAddDialogComponent>, private formBuilder: FormBuilder, private hardSkillService: HardSkillService) 
+  constructor(private dialogRef: MatDialogRef<HardSkillAddDialogComponent>,  private hardSkillService: HardSkillService) 
   {
-    this.addHardSkillForm = formBuilder.group(
+    this.addHardSkillForm = new FormGroup(
       {
-        name: ['', Validators.compose([Validators.required, Validators.maxLength(45)])],
-        level: [0, Validators.compose([Validators.required, Validators.min(0), Validators.max(100)])]
+        name: new FormControl('', [Validators.required, Validators.maxLength(45)]),
+        level: new FormControl(0, [Validators.required, Validators.min(0), Validators.max(100)])
       });
   }
 
   get name(): FormControl
-  {
-    return this.addHardSkillForm.get('name') as FormControl;
-  }
+  { return this.addHardSkillForm.get('name') as FormControl; }
 
   get level(): FormControl
-  {
-    return this.addHardSkillForm.get('level') as FormControl;
-  }
+  { return this.addHardSkillForm.get('level') as FormControl; }
 
   submit(): void
   {
-    this.hardSkillService.add({
+    const hardSkillToAdd = {
       name: this.name.value,
       level: this.level.value
-    }).subscribe( () => {} )
+    };
+
+    this.hardSkillService
+    .add(hardSkillToAdd)
+    .subscribe( () => {} )
 
     this.dialogRef.close();
   }

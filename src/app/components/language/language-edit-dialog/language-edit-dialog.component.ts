@@ -27,14 +27,10 @@ export class LanguageEditDialogComponent
   }
 
   get name(): FormControl
-  {
-    return this.editLanguageForm.get('name') as FormControl;
-  }
+  { return this.editLanguageForm.get('name') as FormControl; }
 
   get level(): FormControl
-  {
-    return this.editLanguageForm.get('level') as FormControl;
-  }
+  { return this.editLanguageForm.get('level') as FormControl; }
 
   submit(): void
   {

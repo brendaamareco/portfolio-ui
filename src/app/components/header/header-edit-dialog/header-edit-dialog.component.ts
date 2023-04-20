@@ -14,41 +14,44 @@ export class HeaderEditDialogComponent
   ownerForm: FormGroup = new FormGroup({});
 
   constructor( public dialogRef: MatDialogRef<HeaderEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public owner: Owner, private formBuilder: FormBuilder, private ownerService: OwnerService) 
+    @Inject(MAT_DIALOG_DATA) public owner: Owner, private ownerService: OwnerService) 
   {
-    this.ownerForm = this.formBuilder.group(
+    this.ownerForm = new FormGroup(
       {
-        thumbnail: [owner.thumbnail, Validators.maxLength(2048)],
-        welcomeText: [owner.welcomeText, Validators.maxLength(1024)],
-        role: [owner.role, Validators.compose([Validators.required, Validators.maxLength(45)])]
+        thumbnail: new FormControl(owner.thumbnail, [Validators.maxLength(2048)]),
+        welcomeText: new FormControl(owner.welcomeText, [Validators.maxLength(1024)]),
+        role: new FormControl(owner.role, [Validators.required, Validators.maxLength(45)])
       }
     )
   }
 
   get thumbnail(): FormControl
-  {
-    return this.ownerForm.get("thumbnail") as FormControl;
-  }
+  { return this.ownerForm.get("thumbnail") as FormControl; }
 
   get welcomeText(): FormControl
-  {
-    return this.ownerForm.get("welcomeText") as FormControl;
-  }
+  { return this.ownerForm.get("welcomeText") as FormControl; }
 
   get role(): FormControl
-  {
-    return this.ownerForm.get("role") as FormControl;
-  }
+  { return this.ownerForm.get("role") as FormControl; }
 
   submit(): void
   {
-    this.owner.thumbnail = this.thumbnail?.value;
-    this.owner.welcomeText = this.welcomeText?.value;
-    this.owner.role = this.role?.value;
+    const ownerToUpdate =
+    {
+      id: this.owner.id,
+      name: this.owner.name,
+      lastName: this.owner.lastName,
+      country: this.owner.country,
+      province: this.owner.province,
+      description: this.owner.description,
+      thumbnail: this.thumbnail?.value,
+      role: this.role?.value,
+      welcomeText: this.welcomeText?.value
+    }
 
     this.ownerService
     .update(this.owner)
-    .subscribe( response => {});
+    .subscribe( () => {});
     this.dialogRef.close();
   }
 }

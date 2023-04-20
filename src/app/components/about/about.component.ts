@@ -15,15 +15,14 @@ export class AboutComponent implements OnInit {
   
   constructor(private ownerService: OwnerService, public dialog: MatDialog){}
 
-  ngOnInit(): void {
-    this.ownerService.getAll().subscribe(
-      owners => { this.owner = owners[0]; }
-    )
+  ngOnInit(): void 
+  {
+    this.ownerService
+    .getAll()
+    .subscribe( owners => { this.owner = owners[0] } )
   }
 
   openEditDialog() 
-  {
-    this.dialog.open(AboutEditDialogComponent, { data: this.owner })
-  }
+  { this.dialog.open(AboutEditDialogComponent, { data: this.owner }); }
 
 }

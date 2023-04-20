@@ -17,17 +17,15 @@ export class EducationComponent
   constructor(public dialog: MatDialog) {}
 
   openEditDialog(): void
-  {
-    this.dialog
-    .open(EducationEditDialogComponent, { data: this.education })
-    .afterClosed()
-    .subscribe(() => { this.educationEdited.emit() });
-  }
+  { this.openDialog(EducationEditDialogComponent); }
 
   openDeleteDialog(): void
+  { this.openDialog(EducationDeleteDialogComponent); }
+
+  openDialog(component: any): void
   {
     this.dialog
-    .open(EducationDeleteDialogComponent, { data: this.education } )
+    .open(component, { data: this.education } )
     .afterClosed()
     .subscribe(() => { this.educationEdited.emit() });
   }

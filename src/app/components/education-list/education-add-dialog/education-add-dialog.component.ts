@@ -56,34 +56,22 @@ export class EducationAddDialogComponent
   }
 
   get institution()
-  {
-    return this.educationAddForm?.get('institution') as FormControl;
-  }
+  { return this.educationAddForm?.get('institution') as FormControl; }
 
   get title()
-  {
-    return this.educationAddForm.get('title') as FormControl;
-  }
+  { return this.educationAddForm.get('title') as FormControl; }
 
   get description()
-  {
-    return this.educationAddForm.get('description') as FormControl;
-  }
+  { return this.educationAddForm.get('description') as FormControl; }
 
   get thumbnail()
-  {
-    return this.educationAddForm.get('thumbnail') as FormControl;
-  }
+  { return this.educationAddForm.get('thumbnail') as FormControl; }
 
   get startDate()
-  {
-    return this.educationAddForm.get('startDate') as FormControl;
-  }
+  { return this.educationAddForm.get('startDate') as FormControl; }
 
   get endDate()
-  {
-    return this.educationAddForm.get('endDate') as FormControl;
-  }
+  { return this.educationAddForm.get('endDate') as FormControl; }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 
   {

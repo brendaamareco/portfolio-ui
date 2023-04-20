@@ -85,33 +85,21 @@ export class EducationEditDialogComponent
     datepicker.close();
   }
 
-  get institution()
-  {
-    return this.educationEditForm?.get('institution') as FormControl;
-  }
+  get institution(): FormControl
+  { return this.educationEditForm?.get('institution') as FormControl; }
 
-  get title()
-  {
-    return this.educationEditForm.get('title') as FormControl;
-  }
+  get title(): FormControl
+  { return this.educationEditForm.get('title') as FormControl; }
 
-  get description()
-  {
-    return this.educationEditForm.get('description') as FormControl;
-  }
+  get description(): FormControl
+  { return this.educationEditForm.get('description') as FormControl; }
 
-  get thumbnail()
-  {
-    return this.educationEditForm.get('thumbnail') as FormControl;
-  }
+  get thumbnail(): FormControl
+  { return this.educationEditForm.get('thumbnail') as FormControl; }
 
-  get startDate()
-  {
-    return this.educationEditForm.get('startDate') as FormControl;
-  }
+  get startDate(): FormControl
+  { return this.educationEditForm.get('startDate') as FormControl; }
 
-  get endDate()
-  {
-    return this.educationEditForm.get('endDate') as FormControl;
-  }
+  get endDate(): FormControl
+  { return this.educationEditForm.get('endDate') as FormControl; }
 }

@@ -26,26 +26,23 @@ export class AboutEditDialogComponent
 
     submitAbout() 
     {
-      this.owner.description = this.aboutForm.get('description')?.value;
-      this.owner.country = this.aboutForm.get('country')?.value;
-      this.owner.province = this.aboutForm.get('province')?.value;
+      this.owner.description = this.description?.value;
+      this.owner.country = this.country?.value;
+      this.owner.province = this.province?.value;
 
-      this.ownerService.update(this.owner).subscribe(response => {});
+      this.ownerService
+      .update(this.owner)
+      .subscribe(() => {});
+
       this.dialogRef.close();
     }
   
-    get country()
-    {
-      return this.aboutForm.get('country') as FormControl;
-    }
+    get country(): FormControl
+    { return this.aboutForm.get('country') as FormControl; }
 
-    get province()
-    {
-      return this.aboutForm.get('province') as FormControl;
-    }
+    get province(): FormControl
+    { return this.aboutForm.get('province') as FormControl; }
 
-    get description()
-    {
-      return this.aboutForm.get('description') as FormControl;
-    }
+    get description(): FormControl
+    { return this.aboutForm.get('description') as FormControl; }
 }

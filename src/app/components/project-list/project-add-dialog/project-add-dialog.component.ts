@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
@@ -9,25 +9,32 @@ import { ProjectService } from 'src/app/services/project.service';
   templateUrl: './project-add-dialog.component.html',
   styleUrls: ['./project-add-dialog.component.scss']
 })
-export class ProjectAddDialogComponent {
-
+export class ProjectAddDialogComponent 
+{
   projectForm: FormGroup = new FormGroup({});
 
   constructor(private projectService: ProjectService, public dialogRef: MatDialogRef<ProjectAddDialogComponent>, private formBuilder: FormBuilder) 
   {
     this.projectForm = formBuilder.group(
       {
-        title: ['', Validators.compose([Validators.required, Validators.maxLength(32)]) ],
-        description: [''],
-        thumbnail: [''],
-        projectUrl: ['']
+        title: ['', Validators.compose([Validators.required, Validators.maxLength(64)]) ],
+        description: ['', Validators.maxLength(1024)],
+        thumbnail: ['', Validators.maxLength(2048)],
+        projectUrl: ['', Validators.maxLength(2048)]
       });
   }
 
-  get title(): AbstractControl<any, any> | null
-  {
-    return this.projectForm.get('title');
-  }
+  get title(): FormControl 
+  { return this.projectForm.get("title") as FormControl; }
+
+  get description(): FormControl 
+  { return this.projectForm.get("description") as FormControl; }
+
+  get thumbnail(): FormControl 
+  { return this.projectForm.get("thumbnail") as FormControl; }
+
+  get projectUrl(): FormControl 
+  { return this.projectForm.get("projectUrl") as FormControl; }
 
   submitProject():void 
   { 
@@ -38,7 +45,9 @@ export class ProjectAddDialogComponent {
       projectUrl: this.projectForm.get('projectUrl')?.value
     }
 
-    this.projectService.add(project).subscribe(project => {});
+    this.projectService
+    .add(project)
+    .subscribe(project => {});
     this.dialogRef.close(); 
   }
 }

@@ -19,7 +19,10 @@ export class HeaderComponent implements OnInit
 
   openEditDialog(): void 
   {
-    this.dialog.open(HeaderEditDialogComponent, { data: this.owner, });
+    this.dialog
+    .open(HeaderEditDialogComponent, { data: this.owner, })
+    .afterClosed()
+    .subscribe( () => this.loadOwner() );
   }
 
   loadOwner(): void

@@ -50,8 +50,9 @@ export class HeaderEditDialogComponent
     }
 
     this.ownerService
-    .update(this.owner)
+    .update(ownerToUpdate)
     .subscribe( () => {});
+
     this.dialogRef.close();
   }
 }

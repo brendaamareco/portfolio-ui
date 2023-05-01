@@ -1,6 +1,6 @@
 <div class="login-container bg-dark p-0 m-0">
     <mat-card class="form-container col-md-3 py-2 m-auto position-absolute">
-        <form class="col-md-10 mx-auto">
+        <form class="col-md-10 mx-auto" [formGroup]="userForm" (submit)="login()">
             <mat-card-header>
                 <mat-card-subtitle>Acceso al portfolio</mat-card-subtitle>
                 <mat-card-title class="text-white pb-4">Login</mat-card-title>
@@ -9,18 +9,24 @@
             <mat-card-content class="mat-typography row">
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre de usuario</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" [formControl]="username">
                 </mat-form-field>
+                <mat-error *ngIf="username.errors?.['required'] && userForm.touched">
+                  <small>Escriba el nombre de usuario</small>
+                </mat-error>
 
                 <mat-form-field appearance="fill">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput type="password">
+                    <input matInput type="password" [formControl]="password">
                 </mat-form-field>
+                <mat-error *ngIf="password.errors?.['required'] && userForm.touched">
+                  <small>Escriba la contraseña</small>
+                </mat-error>
 
             </mat-card-content>
 
             <mat-card-actions align="end">
-                <button mat-raised-button color="primary" type="submit">Iniciar sesión</button>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.valid">Iniciar sesión</button>
             </mat-card-actions>
         </form>
     </mat-card>

@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginPageComponent implements OnInit
 {
   userForm: FormGroup = new FormGroup({});
+  loggedIn: boolean = false;
 
   constructor(private authService: AuthService, private router: Router) 
   {
@@ -24,22 +25,14 @@ export class LoginPageComponent implements OnInit
   ngOnInit(): void 
   {
     if (this.authService.loggedIn)
-      this.showPortfolio();
+    {
+      this.router.navigateByUrl('/')
+      .then(() => { window.location.reload(); });
+    }
   }
 
   login(): void
-  {
-    this.authService
-    .login(this.username.value, this.password.value)
-    .subscribe( loggedIn => 
-      { 
-        if (loggedIn) 
-          this.showPortfolio()
-      });
-  }
-
-  showPortfolio(): void
-  { this.router.navigate(['/']); }
+  { this.authService.login(this.username.value, this.password.value) }
 
   get username(): FormControl
   { return this.userForm.get('username') as FormControl }

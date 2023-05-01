@@ -10,18 +10,17 @@ export class AuthService
 {
   uri: string = 'http://localhost:8080/api';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
-  login(username: string, password: string): Observable<boolean>
+  login(username: string, password: string)
   {
-    this.httpClient.post(this.uri + '/auth', {username: username, password: password})
+    this.httpClient.post(this.uri + '/auth', {username: username, password: password}, {withCredentials:true})
     .subscribe( ((resp: any) => 
     {
-      localStorage.setItem('auth_token', resp.jwtToken)
-      return new Observable<true>
-    })); 
-
-    return new Observable<false>
+      localStorage.setItem('auth_token', resp.jwtToken);
+      this.router.navigateByUrl('/')
+      .then(() => { window.location.reload();}); 
+    }));
   }
 
   logOut()

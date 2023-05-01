@@ -9,8 +9,11 @@
             </span>
         </a>
         <div class="d-flex">
-            <button mat-flat-button color="primary" type="submit" (click)="goToLogin()">
+            <button mat-flat-button color="primary" type="submit" (click)="goToLogin()" *ngIf="!loggedIn">
                 <mat-icon>person</mat-icon> Login
+            </button>
+            <button mat-flat-button color="primary" type="submit" (click)="logOut()" *ngIf="loggedIn" >
+                <mat-icon>person</mat-icon> Logout
             </button>
         </div>
     </div>

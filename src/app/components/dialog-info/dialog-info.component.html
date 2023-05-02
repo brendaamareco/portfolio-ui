@@ -1,1 +1,10 @@
-<p>dialog-info works!</p>
+<h1 mat-dialog-title class="d-flex align-items-center py-3">
+    <mat-icon class="me-2">info</mat-icon>
+    <span> Atención</span>
+</h1>
+<mat-dialog-content class="mat-typography col-10">
+    {{message}}
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="primary">Aceptar</button>
+</mat-dialog-actions>

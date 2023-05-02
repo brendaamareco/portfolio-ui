@@ -1,38 +1,44 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class AuthService 
-{
+export class AuthService {
   uri: string = 'http://localhost:8080/api';
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient) {}
 
-  login(username: string, password: string)
+  login(username: string, password: string): Observable<boolean> 
   {
-    this.httpClient.post(this.uri + '/auth', {username: username, password: password}, httpOptions)
-    .subscribe( ((resp: any) => 
-    {
-      localStorage.setItem('auth_token', resp.jwtToken);
-      this.router.navigateByUrl('/')
-      .then(() => { window.location.reload();}); 
-    }));
+    return this.httpClient
+      .post(
+        this.uri + '/auth',
+        { username: username, password: password },
+        httpOptions
+      )
+      .pipe(
+        map((resp: any) => {
+          localStorage.setItem('auth_token', resp.jwtToken);
+          return true;
+        }),
+        catchError((err) => {
+          return of(false);
+        })
+      );
   }
 
-  logOut()
+  logOut() 
   { localStorage.removeItem('auth_token'); }
 
-  public get loggedIn(): boolean
-  { return (localStorage.getItem('auth_token') != null); }
+  public get loggedIn(): boolean 
+  { return localStorage.getItem('auth_token') != null; }
 
-  get token(): string | null
+  get token(): string | null 
   { return localStorage.getItem('auth_token'); }
 }

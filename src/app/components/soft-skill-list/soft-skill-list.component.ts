@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SoftSkill } from 'src/app/models/softSkill.interface';
 import { SoftSkillService } from 'src/app/services/soft-skill.service';
 import { SoftSkillAddDialogComponent } from './soft-skill-add-dialog/soft-skill-add-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-soft-skill-list',
@@ -12,10 +13,8 @@ import { SoftSkillAddDialogComponent } from './soft-skill-add-dialog/soft-skill-
 export class SoftSkillListComponent {
   softSkillList: SoftSkill[] = [];
   
-  constructor(private softSkillService: SoftSkillService, public dialog: MatDialog) 
-  {
-    this.loadSkills();
-  }
+  constructor(private softSkillService: SoftSkillService, public dialog: MatDialog, private authService: AuthService) 
+  { this.loadSkills(); }
 
   loadSkills(): void
   {
@@ -31,4 +30,7 @@ export class SoftSkillListComponent {
     .afterClosed()
     .subscribe(() => { this.loadSkills(); });
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

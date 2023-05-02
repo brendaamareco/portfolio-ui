@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HeaderEditDialogComponent } from './header-edit-dialog/header-edit-dialog.component';
 import { OwnerService } from 'src/app/services/owner.service';
 import { Owner } from 'src/app/models/owner.interface';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit
 {
   owner: Owner | undefined;
 
-  constructor(private ownerService: OwnerService, public dialog: MatDialog) {}
+  constructor(private ownerService: OwnerService, public dialog: MatDialog, private authService: AuthService) {}
 
   ngOnInit(): void { this.loadOwner(); }
 
@@ -31,4 +32,7 @@ export class HeaderComponent implements OnInit
       .getAll()
       ?.subscribe((owners) => (this.owner = owners[0]));
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

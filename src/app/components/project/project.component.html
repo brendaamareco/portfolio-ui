@@ -1,10 +1,10 @@
 <mat-card class="mb-2" *ngIf="project">
     <mat-card-header class="pb-1">
         <mat-card-actions class="w-100 d-flex justify-content-end">
-            <button mat-icon-button (click)="openEditDialog()">
+            <button mat-icon-button (click)="openEditDialog()" *ngIf="isLogged">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-icon-button (click)="openDeleteDialog()">
+            <button mat-icon-button (click)="openDeleteDialog()" *ngIf="isLogged">
                 <mat-icon>remove</mat-icon>
             </button>
         </mat-card-actions>

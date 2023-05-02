@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HardSkill } from 'src/app/models/hardSkill.interface';
 import { HardSkillService } from 'src/app/services/hard-skill.service';
 import { HardSkillAddDialogComponent } from './hard-skill-add-dialog/hard-skill-add-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-hard-skill-list',
@@ -13,7 +14,7 @@ export class HardSkillListComponent
 {
   hardSkills: HardSkill[] = [];
 
-  constructor(private hardSkillService: HardSkillService, private dialog: MatDialog) 
+  constructor(private hardSkillService: HardSkillService, private dialog: MatDialog, private authService: AuthService) 
   { this.loadHardSkills(); }
 
   loadHardSkills(): void
@@ -30,4 +31,7 @@ export class HardSkillListComponent
     .afterClosed()
     .subscribe( () => this.loadHardSkills());
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Experience } from 'src/app/models/experience.interface';
 import { ExperienceEditDialogComponent } from './experience-edit-dialog/experience-edit-dialog.component';
 import { ExperienceDeleteDialogComponent } from './experience-delete-dialog/experience-delete-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-experience',
@@ -14,7 +15,7 @@ export class ExperienceComponent
   @Input() experience: Experience | undefined;
   @Output() experienceChanged: EventEmitter<void> = new EventEmitter();
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private authService: AuthService) {}
 
   openEditDialog(): void
   { this.openDialog(ExperienceEditDialogComponent); }
@@ -29,4 +30,7 @@ export class ExperienceComponent
     .afterClosed()
     .subscribe(() => { this.experienceChanged.emit(); });
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

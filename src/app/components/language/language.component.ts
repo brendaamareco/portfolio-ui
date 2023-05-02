@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Language, LanguageLevel } from 'src/app/models/language.interface';
 import { LanguageEditDialogComponent } from './language-edit-dialog/language-edit-dialog.component';
 import { LanguageDeleteDialogComponent } from './language-delete-dialog/language-delete-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-language',
@@ -15,22 +16,19 @@ export class LanguageComponent
   @Output() languageChanged = new EventEmitter<void>();
   levelValue: number = this.getLevelValue();
 
-  constructor(private dialog: MatDialog){}
+  constructor(private dialog: MatDialog, private authService: AuthService){}
 
-  getLevelValue(): number {
+  getLevelValue(): number 
+  {
     let levelValue = LanguageLevel[this.language.level] as unknown as number;
     return levelValue*20;
   }
 
   openEditDialog(): void 
-  {
-    this.openDialog(LanguageEditDialogComponent);
-  }
+  { this.openDialog(LanguageEditDialogComponent); }
 
   openDeleteDialog(): void 
-  {
-    this.openDialog(LanguageDeleteDialogComponent);
-  }
+  { this.openDialog(LanguageDeleteDialogComponent); }
 
   openDialog(component: any): void 
   {
@@ -39,4 +37,7 @@ export class LanguageComponent
     .afterClosed()
     .subscribe( () => this.languageChanged.emit() );
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

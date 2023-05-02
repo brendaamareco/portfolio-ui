@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Language } from 'src/app/models/language.interface';
 import { LanguageService } from 'src/app/services/language.service';
 import { LanguageAddDialogComponent } from './language-add-dialog/language-add-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-language-list',
@@ -13,10 +14,8 @@ export class LanguageListComponent
 {
   languageList: Language[] = [];
 
-  constructor(private languageService: LanguageService, private dialog: MatDialog)
-  {
-    this.loadLanguageList();
-  }
+  constructor(private languageService: LanguageService, private dialog: MatDialog, private authService: AuthService)
+  { this.loadLanguageList(); }
 
   loadLanguageList(): void
   {
@@ -32,4 +31,7 @@ export class LanguageListComponent
     .afterClosed()
     .subscribe( () => this.loadLanguageList() );
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

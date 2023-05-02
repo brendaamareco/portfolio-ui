@@ -4,7 +4,7 @@
             <mat-icon>language</mat-icon>
             <span class="px-2">Idiomas</span>
         </mat-card-title>
-        <button mat-icon-button class="position-absolute top-0 end-0" (click)="openAddDialog()">
+        <button mat-icon-button class="position-absolute top-0 end-0" (click)="openAddDialog()" *ngIf="isLogged">
             <mat-icon>add</mat-icon>
         </button>
     </mat-card-header>

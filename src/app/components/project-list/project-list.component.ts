@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectService } from 'src/app/services/project.service';
 import { ProjectAddDialogComponent } from './project-add-dialog/project-add-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-project-list',
@@ -13,10 +14,8 @@ export class ProjectListComponent
 {
   projectList: Project[] = [];
 
-  constructor(public projectService: ProjectService, public dialog: MatDialog) 
-  {
-    this.loadProjects();
-  }
+  constructor(public projectService: ProjectService, public dialog: MatDialog, private authService: AuthService) 
+  { this.loadProjects(); }
 
   openAddDialog(): void 
   {
@@ -29,5 +28,8 @@ export class ProjectListComponent
       projects => { this.projectList = projects }
     )
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 
 }

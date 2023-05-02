@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { HardSkill } from 'src/app/models/hardSkill.interface';
 import { HardSkillEditDialogComponent } from './hard-skill-edit-dialog/hard-skill-edit-dialog.component';
 import { HardSkillDeleteDialogComponent } from './hard-skill-delete-dialog/hard-skill-delete-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-hard-skill',
@@ -14,17 +15,13 @@ export class HardSkillComponent
   @Input() hardSkill: HardSkill | undefined;
   @Output() hardSkillChanged = new EventEmitter<void>();
 
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog, private authService: AuthService){}
 
   openEditDialog(): void
-  {
-    this.openDialog(HardSkillEditDialogComponent);
-  }
+  { this.openDialog(HardSkillEditDialogComponent); }
   
   openDeleteDialog(): void
-  {
-    this.openDialog(HardSkillDeleteDialogComponent);
-  }
+  { this.openDialog(HardSkillDeleteDialogComponent); }
 
   openDialog(component: any)
   {
@@ -33,4 +30,7 @@ export class HardSkillComponent
     .afterClosed()
     .subscribe(() => { this.hardSkillChanged.emit() });
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

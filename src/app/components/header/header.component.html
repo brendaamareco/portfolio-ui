@@ -30,7 +30,7 @@
             </button>
         </a>
     </div>
-    <button mat-icon-button (click)="openEditDialog()" class="position-absolute top-0 end-0">
+    <button mat-icon-button (click)="openEditDialog()" class="position-absolute top-0 end-0" *ngIf="isLogged">
         <mat-icon>edit</mat-icon>
     </button>
 </div>

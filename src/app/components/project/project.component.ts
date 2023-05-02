@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Project } from 'src/app/models/project.interface';
 import { ProjectEditDialogComponent } from './project-edit-dialog/project-edit-dialog.component';
 import { ProjectDeleteDialogComponent } from './project-delete-dialog/project-delete-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-project',
@@ -14,7 +15,7 @@ export class ProjectComponent
   @Input() project: Project | undefined;
   @Output() projectEditedEvent = new EventEmitter<string>();
 
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog, private authService: AuthService){}
 
   openEditDialog(): void
   {
@@ -31,4 +32,7 @@ export class ProjectComponent
     .afterClosed()
     .subscribe(() => this.projectEditedEvent.emit());
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

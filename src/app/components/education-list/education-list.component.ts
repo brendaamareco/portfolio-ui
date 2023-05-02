@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Education } from 'src/app/models/education.interface';
 import { EducationService } from 'src/app/services/education.service';
 import { EducationAddDialogComponent } from './education-add-dialog/education-add-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-education-list',
@@ -13,7 +14,7 @@ export class EducationListComponent
 {
   educationList: Education[] = [];
 
-  constructor(private educationService: EducationService, public dialog: MatDialog) 
+  constructor(private educationService: EducationService, public dialog: MatDialog, private authService: AuthService) 
   {
     this.loadEducationList();
   }
@@ -32,4 +33,7 @@ export class EducationListComponent
     .afterClosed()
     .subscribe( () => this.loadEducationList());
   }
+
+  get isLogged(): boolean
+  { return this.authService.loggedIn; }
 }

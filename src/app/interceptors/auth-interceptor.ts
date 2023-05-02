@@ -18,8 +18,6 @@ export class AuthInterceptor implements HttpInterceptor
         
         if (token != null) 
         {
-            console.log(req.headers.get(TOKEN_HEADER_KEY))
-            console.log(token)
             req = req.clone({
                 headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) 
             })
@@ -42,9 +40,7 @@ export class AuthInterceptor implements HttpInterceptor
         }
     }
     handleResponse(req: HttpRequest<any>, event: any) 
-    {
-        if (event instanceof HttpResponse) {}
-    }
+    { if (event instanceof HttpResponse) {} }
 
 }
 

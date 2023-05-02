@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export abstract class AbstractService<T> {
+export abstract class AbstractService<T> 
+{
     rootUrl: string = '';
 
     constructor(protected httpClient: HttpClient, protected url: string) {

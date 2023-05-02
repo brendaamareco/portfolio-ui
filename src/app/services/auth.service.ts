@@ -1,7 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +18,7 @@ export class AuthService
 
   login(username: string, password: string)
   {
-    this.httpClient.post(this.uri + '/auth', {username: username, password: password}, {withCredentials:true})
+    this.httpClient.post(this.uri + '/auth', {username: username, password: password}, httpOptions)
     .subscribe( ((resp: any) => 
     {
       localStorage.setItem('auth_token', resp.jwtToken);
@@ -28,4 +32,7 @@ export class AuthService
 
   public get loggedIn(): boolean
   { return (localStorage.getItem('auth_token') != null); }
+
+  get token(): string | null
+  { return localStorage.getItem('auth_token'); }
 }

@@ -42,6 +42,7 @@ import { LanguageEditDialogComponent } from '../../components/language/language-
 import { LanguageDeleteDialogComponent } from '../../components/language/language-delete-dialog/language-delete-dialog.component';
 import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
 import { AuthInterceptor, authInterceptorProviders } from 'src/app/interceptors/auth-interceptor';
+import { DialogInfoComponent } from '../../components/dialog-info/dialog-info.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { AuthInterceptor, authInterceptorProviders } from 'src/app/interceptors/
     LanguageAddDialogComponent,
     LanguageEditDialogComponent,
     LanguageDeleteDialogComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    DialogInfoComponent
   ],
   imports: [
     CommonModule,

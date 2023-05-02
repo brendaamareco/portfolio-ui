@@ -19,7 +19,7 @@ import { LanguageListComponent } from '../../components/language-list/language-l
 import { LanguageComponent } from '../../components/language/language.component';
 import { ExperienceComponent } from '../../components/experience/experience.component';
 import { ExperienceListComponent } from '../../components/experience-list/experience-list.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { HeaderEditDialogComponent } from 'src/app/components/header/header-edit-dialog/header-edit-dialog.component';
 import { AboutEditDialogComponent } from '../../components/about/about-edit-dialog/about-edit-dialog.component';
 import { ProjectAddDialogComponent } from '../../components/project-list/project-add-dialog/project-add-dialog.component';
@@ -41,7 +41,7 @@ import { LanguageAddDialogComponent } from '../../components/language-list/langu
 import { LanguageEditDialogComponent } from '../../components/language/language-edit-dialog/language-edit-dialog.component';
 import { LanguageDeleteDialogComponent } from '../../components/language/language-delete-dialog/language-delete-dialog.component';
 import { LoginPageComponent } from 'src/app/pages/login-page/login-page.component';
-import { AuthInterceptor, authInterceptorProviders } from 'src/app/interceptors/auth-interceptor';
+import { authInterceptorProviders } from 'src/app/interceptors/auth-interceptor';
 import { DialogInfoComponent } from '../../components/dialog-info/dialog-info.component';
 
 @NgModule({

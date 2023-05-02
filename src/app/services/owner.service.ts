@@ -10,6 +10,6 @@ export class OwnerService extends AbstractService<Owner>
 {
   constructor(protected override httpClient: HttpClient) 
   {
-    super(httpClient, "http://localhost:8080/api/owner");
+    super(httpClient, "/owner");
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -10,7 +11,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  uri: string = 'http://localhost:8080/api';
+  uri: string = environment.apiURL + "/api";
 
   constructor(private httpClient: HttpClient) {}
 

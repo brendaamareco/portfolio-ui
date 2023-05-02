@@ -10,6 +10,6 @@ export class ExperienceService extends AbstractService<Experience>
 {
   constructor(protected override httpClient: HttpClient) 
   {
-    super(httpClient, "http://localhost:8080/api/experience");
+    super(httpClient, "/experience");
   }
 }

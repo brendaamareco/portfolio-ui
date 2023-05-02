@@ -10,6 +10,6 @@ export class HardSkillService extends AbstractService<HardSkill>
 {
   constructor(protected override httpClient: HttpClient) 
   {
-    super(httpClient, "http://localhost:8080/api/hard-skills");
+    super(httpClient, "/hard-skills");
   }
 }

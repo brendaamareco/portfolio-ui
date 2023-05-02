@@ -10,6 +10,6 @@ export class EducationService extends AbstractService<Education>
 {
   constructor(protected override httpClient: HttpClient) 
   { 
-    super(httpClient, "http://localhost:8080/api/education");
+    super(httpClient, "/education");
   }
 }

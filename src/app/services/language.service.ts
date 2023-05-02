@@ -9,6 +9,6 @@ import { HttpClient } from '@angular/common/http';
 export class LanguageService extends AbstractService<Language> {
 
   constructor(protected override httpClient: HttpClient) {
-    super(httpClient, "http://localhost:8080/api/language");
+    super(httpClient, "/language");
   }
 }

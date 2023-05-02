@@ -10,6 +10,6 @@ export class ProjectService extends AbstractService<Project>
 {
   constructor(protected override httpClient: HttpClient) 
   {
-    super(httpClient, "http://localhost:8080/api/projects");
+    super(httpClient, "/projects");
   }
 }

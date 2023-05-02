@@ -11,6 +11,6 @@ export class SoftSkillService extends AbstractService<SoftSkill>
 {
   constructor(protected override httpClient: HttpClient) 
   { 
-    super(httpClient, "http://localhost:8080/api/soft-skills");
+    super(httpClient, "/soft-skills");
   }
 }

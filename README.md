@@ -3,7 +3,7 @@
 Este proyecto fue generado en [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3.
 Se utilizó Angular Material y Bootstrap 5
 
-## Development server
+## Development and production servers
 
 Ejecutar `ng serve --configuration=dev` para ejecutar en modo desarrollo. Navegar en `http://localhost:4200/`.
 

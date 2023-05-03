@@ -12,6 +12,7 @@ import { OwnerService } from 'src/app/services/owner.service';
 export class HeaderEditDialogComponent 
 {
   ownerForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor( public dialogRef: MatDialogRef<HeaderEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public owner: Owner, private ownerService: OwnerService) 
@@ -36,6 +37,8 @@ export class HeaderEditDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     const ownerToUpdate =
     {
       id: this.owner.id,
@@ -51,8 +54,10 @@ export class HeaderEditDialogComponent
 
     this.ownerService
     .update(ownerToUpdate)
-    .subscribe( () => {});
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    });
   }
 }

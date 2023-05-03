@@ -12,6 +12,7 @@ import { OwnerService } from 'src/app/services/owner.service';
 export class AboutEditDialogComponent 
 {
   aboutForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<AboutEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public owner: Owner, private ownerService: OwnerService) 
@@ -26,6 +27,8 @@ export class AboutEditDialogComponent
 
     submitAbout() 
     {
+      this.loading = true;
+
       const ownerToUpdate =
       {
         id: this.owner.id,
@@ -41,9 +44,11 @@ export class AboutEditDialogComponent
 
       this.ownerService
       .update(ownerToUpdate)
-      .subscribe(() => {});
-
-      this.dialogRef.close();
+      .subscribe(() => 
+      {
+        this.loading = false;
+        this.dialogRef.close(); 
+      });
     }
   
     get country(): FormControl

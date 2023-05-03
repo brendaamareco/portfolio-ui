@@ -35,9 +35,10 @@
 
     </mat-dialog-content>
 
-    <mat-dialog-actions align="end">
+    <mat-dialog-actions align="end" *ngIf="!loading">
         <button mat-button mat-dialog-close>Cancelar</button>
         <button mat-raised-button color="primary" type="submit" [disabled]="aboutForm.invalid">Editar</button>
     </mat-dialog-actions>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
 
 </form>

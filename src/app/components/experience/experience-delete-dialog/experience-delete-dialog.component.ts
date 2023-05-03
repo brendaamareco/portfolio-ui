@@ -11,6 +11,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 export class ExperienceDeleteDialogComponent 
 {
   experienceDetails: String = "";
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<ExperienceDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private experience: Experience, private experienceService: ExperienceService)
   {
@@ -19,10 +20,14 @@ export class ExperienceDeleteDialogComponent
 
   deleteExperience(): void
   {
+    this.loading = true;
+
     this.experienceService
     .delete(this.experience?.id)
-    .subscribe( () => {} );
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } );
   }
 }

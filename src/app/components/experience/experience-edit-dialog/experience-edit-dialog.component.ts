@@ -53,6 +53,7 @@ export const MY_FORMATS = {
 export class ExperienceEditDialogComponent 
 {
   editExperienceForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ExperienceEditDialogComponent>,
@@ -72,6 +73,8 @@ export class ExperienceEditDialogComponent
 
   submit(): void 
   {
+    this.loading = true;
+
     const experienceToUpdate = 
     {
       id: this.experience.id,
@@ -87,9 +90,11 @@ export class ExperienceEditDialogComponent
 
     this.experienceService
       .update(experienceToUpdate)
-      .subscribe(() => {});
-
-    this.dialogRef.close();
+      .subscribe(() => 
+      {
+        this.loading = false;
+        this.dialogRef.close();
+      });
   }
 
   setMonthAndYear(

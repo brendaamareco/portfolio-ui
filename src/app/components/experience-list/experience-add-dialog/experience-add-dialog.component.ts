@@ -41,6 +41,7 @@ const moment = _rollupMoment || _moment;
 export class ExperienceAddDialogComponent 
 {
   addExperienceForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(
     public dialogRef: MatDialogRef<ExperienceAddDialogComponent>,
@@ -58,6 +59,8 @@ export class ExperienceAddDialogComponent
 
   submit(): void 
   {
+    this.loading = true;
+
     const experienceToAdd = 
     {
       title: this.title.value,
@@ -73,9 +76,11 @@ export class ExperienceAddDialogComponent
 
     this.experienceService
       .add(experienceToAdd)
-      .subscribe(() => {});
-
-    this.dialogRef.close();
+      .subscribe(() => 
+      {
+        this.loading = false;
+        this.dialogRef.close();
+      });
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl)

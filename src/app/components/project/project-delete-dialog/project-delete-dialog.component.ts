@@ -11,6 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectDeleteDialogComponent 
 {
   projectTitle: string = "";
+  loading: boolean = false;
 
   constructor(public dialog: MatDialogRef<ProjectDeleteDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private project: Project, private projectService: ProjectService) 
@@ -20,7 +21,11 @@ export class ProjectDeleteDialogComponent
 
   deleteProject(): void
   {
-    this.projectService.delete(this.project.id).subscribe(data => {});
-    this.dialog.close();
+    this.loading = true;
+    this.projectService.delete(this.project.id).subscribe(data => 
+      {
+        this.loading = false;
+        this.dialog.close();
+      });  
   }
 }

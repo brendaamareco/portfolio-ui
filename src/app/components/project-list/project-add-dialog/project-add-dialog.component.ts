@@ -12,6 +12,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectAddDialogComponent 
 {
   projectForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(private projectService: ProjectService, public dialogRef: MatDialogRef<ProjectAddDialogComponent>, private formBuilder: FormBuilder) 
   {
@@ -38,6 +39,8 @@ export class ProjectAddDialogComponent
 
   submitProject():void 
   { 
+    this.loading = true;
+
     let project: Project = {
       title: this.projectForm.get('title')?.value,
       description: this.projectForm.get('description')?.value,
@@ -47,7 +50,10 @@ export class ProjectAddDialogComponent
 
     this.projectService
     .add(project)
-    .subscribe(project => {});
-    this.dialogRef.close(); 
+    .subscribe((project) => 
+      {
+        this.loading = false;
+        this.dialogRef.close();
+      });
   }
 }

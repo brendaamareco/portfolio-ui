@@ -12,6 +12,7 @@ import { ProjectService } from 'src/app/services/project.service';
 export class ProjectEditDialogComponent 
 {
   projectEditForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<ProjectEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private project: Project, private formBuilder: FormBuilder, private projectService: ProjectService)
@@ -39,14 +40,18 @@ export class ProjectEditDialogComponent
     
     submitProject()
     {
+      this.loading = true;
+
       this.projectService.update({
         id: this.project.id,
         title: this.title?.value,
         description: this.description?.value,
         thumbnail: this.thumbnail?.value,
         projectUrl: this.projectUrl?.value
-      }).subscribe(project => {});
-
-      this.dialogRef.close();
+      }).subscribe(project => 
+        {
+          this.loading = false;
+          this.dialogRef.close();
+        });
     }
 }

@@ -11,16 +11,21 @@ import { HardSkillService } from 'src/app/services/hard-skill.service';
 export class HardSkillDeleteDialogComponent 
 {
   hardSkillName: string = "";
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<HardSkillDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private hardSkill: HardSkill, private hardSkillService: HardSkillService)
   { this.hardSkillName = hardSkill.name; }
 
   deleteHardSkill(): void
   {
+    this.loading = true;
+
     this.hardSkillService
     .delete(this.hardSkill.id)
-    .subscribe( () => {})
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    })
   }
 }

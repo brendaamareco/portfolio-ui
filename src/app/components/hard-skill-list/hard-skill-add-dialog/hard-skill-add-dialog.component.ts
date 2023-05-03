@@ -11,6 +11,7 @@ import { HardSkillService } from 'src/app/services/hard-skill.service';
 export class HardSkillAddDialogComponent 
 {
   addHardSkillForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<HardSkillAddDialogComponent>,  private hardSkillService: HardSkillService) 
   {
@@ -29,6 +30,8 @@ export class HardSkillAddDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     const hardSkillToAdd = {
       name: this.name.value,
       level: this.level.value
@@ -36,8 +39,10 @@ export class HardSkillAddDialogComponent
 
     this.hardSkillService
     .add(hardSkillToAdd)
-    .subscribe( () => {} )
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } )
   }
 }

@@ -12,6 +12,7 @@ import { HardSkillService } from 'src/app/services/hard-skill.service';
 export class HardSkillEditDialogComponent 
 {
   editHardSkillForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<HardSkillEditDialogComponent>, @Inject(MAT_DIALOG_DATA) private hardSkill: HardSkill, private hardSkillService: HardSkillService) 
   {
@@ -30,12 +31,16 @@ export class HardSkillEditDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     this.hardSkillService.update({
       id: this.hardSkill.id,
       name: this.name.value,
       level: this.level.value
-    }).subscribe( () => {} )
-
-    this.dialogRef.close();
+    }).subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } )
   }
 }

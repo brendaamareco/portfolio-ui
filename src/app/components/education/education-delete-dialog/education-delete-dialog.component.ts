@@ -11,6 +11,7 @@ import { EducationService } from 'src/app/services/education.service';
 export class EducationDeleteDialogComponent 
 {
   educationDetails: string = "";
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<EducationDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private education: Education, private educationService: EducationService)
   {
@@ -19,10 +20,14 @@ export class EducationDeleteDialogComponent
 
   deleteEducation(): void
   {
+    this.loading = true;
+
     this.educationService
     .delete(this.education.id)
-    .subscribe( () => {});
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    });
   }
 }

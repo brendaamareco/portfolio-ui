@@ -42,6 +42,7 @@ export const MY_FORMATS = {
 export class EducationEditDialogComponent 
 {
   educationEditForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
   
   constructor(public dialogRef: MatDialogRef<EducationEditDialogComponent>,  @Inject(MAT_DIALOG_DATA) private education: Education, private educationService: EducationService)
   {
@@ -58,6 +59,8 @@ export class EducationEditDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     const educationToUpdate =
     {
       id: this.education.id,
@@ -70,9 +73,11 @@ export class EducationEditDialogComponent
     
     this.educationService
     .update(educationToUpdate)
-    .subscribe(() => {});
-
-    this.dialogRef.close();
+    .subscribe(() => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    });
   }
 
   setMonthAndYear(normalizedMonthAndYear: Moment, datepicker: MatDatepicker<Moment>, formControl: FormControl) 

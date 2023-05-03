@@ -41,6 +41,7 @@ export const MY_FORMATS = {
 export class EducationAddDialogComponent 
 {
   educationAddForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<EducationAddDialogComponent>, private formBuilder: FormBuilder, private educationService: EducationService) 
   {
@@ -85,6 +86,8 @@ export class EducationAddDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     this.educationService.add(
       {
         institution: this.institution.value,
@@ -95,8 +98,10 @@ export class EducationAddDialogComponent
           startDate: this.startDate.value,
           endDate: this.endDate.value
         }
-      }).subscribe((education) => {});
-
-    this.dialogRef.close();
+      }).subscribe((education) => 
+      {
+        this.loading = false;
+        this.dialogRef.close();
+      });
   }
 }

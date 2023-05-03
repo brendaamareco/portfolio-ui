@@ -11,6 +11,7 @@ import { LanguageService } from 'src/app/services/language.service';
 export class LanguageDeleteDialogComponent 
 {
   languageName: string = "";
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<LanguageDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private language: Language, private languageService: LanguageService)
   {
@@ -19,10 +20,14 @@ export class LanguageDeleteDialogComponent
 
   deleteLanguage(): void
   {
+    this.loading = true;
+
     this.languageService
     .delete(this.language.id)
-    .subscribe( () => {} );
-
-    this.dialogRef.close();
+    .subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } );
   }
 }

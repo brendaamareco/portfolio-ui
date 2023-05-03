@@ -13,6 +13,7 @@ export class LanguageAddDialogComponent
 {
   addLanguageForm: FormGroup = new FormGroup({});
   levels = Object.values(LanguageLevel).filter((v) => isNaN(Number(v)));
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<LanguageAddDialogComponent>, private formBuilder: FormBuilder, private languageService: LanguageService)
   {
@@ -32,13 +33,17 @@ export class LanguageAddDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     this.languageService.add(
       {
         name: this.name.value,
         level: this.level.value
       }
-    ).subscribe( () => {} );
-
-    this.dialogRef.close();
+    ).subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } );
   }
 }

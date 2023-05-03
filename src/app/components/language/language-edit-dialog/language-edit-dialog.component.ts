@@ -13,6 +13,7 @@ export class LanguageEditDialogComponent
 {
   editLanguageForm: FormGroup = new FormGroup({});
   levels = Object.values(LanguageLevel).filter((v) => isNaN(Number(v)));
+  loading: boolean = false;
 
   constructor(private dialogRef: MatDialogRef<LanguageEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private language: Language,
@@ -34,14 +35,18 @@ export class LanguageEditDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     this.languageService.update(
       {
         id: this.language.id,
         name: this.name.value,
         level: this.level.value
       }
-    ).subscribe( () => {} );
-
-    this.dialogRef.close();
+    ).subscribe( () => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    } );
   }
 }

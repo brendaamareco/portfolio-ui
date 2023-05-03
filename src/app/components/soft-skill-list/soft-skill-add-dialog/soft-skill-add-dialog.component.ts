@@ -11,6 +11,7 @@ import { SoftSkillService } from 'src/app/services/soft-skill.service';
 export class SoftSkillAddDialogComponent 
 {
   addSoftSkillForm: FormGroup = new FormGroup({});
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<SoftSkillAddDialogComponent>, private softSkillService: SoftSkillService)
   {
@@ -25,10 +26,14 @@ export class SoftSkillAddDialogComponent
 
   submit(): void
   {
+    this.loading = true;
+
     this.softSkillService
     .add({name: this.name.value})
-    .subscribe(() => {});
-
-    this.dialogRef.close();
+    .subscribe(() => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    });
   }
 }

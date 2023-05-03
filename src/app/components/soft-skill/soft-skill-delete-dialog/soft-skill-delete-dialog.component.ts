@@ -11,6 +11,7 @@ import { SoftSkillService } from 'src/app/services/soft-skill.service';
 export class SoftSkillDeleteDialogComponent 
 {
   softSkill: SoftSkill | undefined;
+  loading: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<SoftSkillDeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) private dialogData: SoftSkill, private softSkillService: SoftSkillService)
   {
@@ -19,10 +20,14 @@ export class SoftSkillDeleteDialogComponent
 
   deleteSoftSkill(): void
   {
+    this.loading = true;
+
     this.softSkillService
     .delete(this.softSkill?.id)
-    .subscribe(() => {});
-
-    this.dialogRef.close();
+    .subscribe(() => 
+    {
+      this.loading = false;
+      this.dialogRef.close();
+    });
   }
 }

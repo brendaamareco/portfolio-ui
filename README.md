@@ -4,12 +4,16 @@ Este proyecto fue generado en [Angular CLI](https://github.com/angular/angular-c
 
 ## Development and production server
 
-### Server de front end local
+### Server producción
 
-Ejecutar `npm start --configuration=dev` para ejecutar en modo desarrollo.
+`https://portfolio-brenda-mareco.web.app`
+
+### Server local
+
+Ejecutar `ng serve --configuration=production` para ejecutar en modo **producción**. Navegar en `http://localhost:4200/`. Se llamará a la url de producción de la API.
+
+Ejecutar `npm start --configuration=dev` para ejecutar en modo **desarrollo**.
 Navegar en `http://localhost:4200/`. Se llamará a a url local de la API.
-
-Ejecutar `ng serve --configuration=production` para ejecutar en modo producción. Navegar en `http://localhost:4200/`. Se llamará a la url de producción de la API.
 
 ## Build
 
